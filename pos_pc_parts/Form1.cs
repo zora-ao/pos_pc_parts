@@ -4,66 +4,58 @@ namespace pos_pc_parts
 {
     public partial class Form1 : Form
     {
-        MySqlConnection cn = new MySqlConnection();
-        MySqlCommand cm = new MySqlCommand();
-        DBConnection dbcon = new DBConnection();
+
 
         public Form1()
         {
             InitializeComponent();
 
-            loadProducts();
-            CountProducts();
+
 
         }
 
-        public void loadProducts()
+        private void button1_Click(object sender, EventArgs e)
         {
-            cn = new MySqlConnection(dbcon.GetConnection());
 
-            cn.Open();
+            admin_main_panel.Controls.Clear();
 
-            cm = new MySqlCommand("SELECT * FROM products", cn);
-       
-            MySqlDataReader dr = cm.ExecuteReader();
-
-            while (dr.Read())
-            {
-                dataGridView1.Rows.Add(
-                    dr["product_id"].ToString(),
-                    dr["product_name"].ToString(),
-                    dr["category"].ToString(),
-                    dr["price"].ToString(),
-                    dr["quantity"].ToString()
-                    );
-            }
-
-            dr.Close();
-
-
-            cn.Close();
+            dashboardContents dashboard = new dashboardContents();
+            dashboard.TopLevel = false;
+            dashboard.FormBorderStyle = FormBorderStyle.None;
+            dashboard.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(dashboard);
+            admin_main_panel.Tag = dashboard;
+            dashboard.BringToFront();
+            dashboard.Show();
 
         }
 
-        public void CountProducts()
+        private void button3_Click(object sender, EventArgs e)
         {
-            cn = new MySqlConnection(dbcon.GetConnection());
+            admin_main_panel.Controls.Clear();
 
-            cn.Open();
-
-            cm = new MySqlCommand("SELECT COUNT(*) FROM products", cn);
-
-            int total = Convert.ToInt32(cm.ExecuteScalar());
-            lbTotalItems.Text = total.ToString();
-
-            cn.Close();
-
-
+            AddProducts addProd = new AddProducts();
+            addProd.TopLevel = false;
+            addProd.FormBorderStyle = FormBorderStyle.None;
+            addProd.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(addProd);
+            admin_main_panel.Tag = addProd;
+            addProd.BringToFront();
+            addProd.Show();
         }
 
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            admin_main_panel.Controls.Clear();
 
-
-
-       
+            categoryList cat = new categoryList();
+            cat.TopLevel = false;
+            cat.FormBorderStyle = FormBorderStyle.None;
+            cat.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(cat);
+            admin_main_panel.Tag = cat;
+            cat.BringToFront();
+            cat.Show();
+        }
     }
 }
