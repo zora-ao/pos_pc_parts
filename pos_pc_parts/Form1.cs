@@ -9,14 +9,13 @@ namespace pos_pc_parts
         public Form1()
         {
             InitializeComponent();
-
+            defaultLoad();
 
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void defaultLoad()
         {
-
             admin_main_panel.Controls.Clear();
 
             dashboardContents dashboard = new dashboardContents();
@@ -27,6 +26,11 @@ namespace pos_pc_parts
             admin_main_panel.Tag = dashboard;
             dashboard.BringToFront();
             dashboard.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            defaultLoad();
 
         }
 
@@ -56,6 +60,12 @@ namespace pos_pc_parts
             admin_main_panel.Tag = cat;
             cat.BringToFront();
             cat.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmCashier frmCash = new frmCashier();
+            frmCash.ShowDialog();
         }
     }
 }

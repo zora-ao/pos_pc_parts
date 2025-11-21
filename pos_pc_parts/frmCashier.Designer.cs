@@ -1,0 +1,572 @@
+﻿namespace pos_pc_parts
+{
+    partial class frmCashier
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            panel2 = new Panel();
+            label2 = new Label();
+            label1 = new Label();
+            panel4 = new Panel();
+            panel1 = new Panel();
+            dataGridView1 = new DataGridView();
+            panel3 = new Panel();
+            button12 = new Button();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            button8 = new Button();
+            button9 = new Button();
+            button7 = new Button();
+            button10 = new Button();
+            button6 = new Button();
+            button5 = new Button();
+            button2 = new Button();
+            button11 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            panel5 = new Panel();
+            colName = new DataGridViewTextBoxColumn();
+            colQuantity = new DataGridViewTextBoxColumn();
+            colPrice = new DataGridViewTextBoxColumn();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox3 = new TextBox();
+            label4 = new Label();
+            panel6 = new Panel();
+            panel7 = new Panel();
+            label5 = new Label();
+            textBox4 = new TextBox();
+            label6 = new Label();
+            textBox5 = new TextBox();
+            textBox6 = new TextBox();
+            label7 = new Label();
+            button13 = new Button();
+            button14 = new Button();
+            button15 = new Button();
+            button16 = new Button();
+            button17 = new Button();
+            button18 = new Button();
+            button19 = new Button();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel3.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            SuspendLayout();
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(925, 46);
+            panel2.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(94, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(29, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Jose";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(39, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Cashier:";
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(button19);
+            panel4.Controls.Add(button18);
+            panel4.Controls.Add(button17);
+            panel4.Controls.Add(button16);
+            panel4.Controls.Add(button15);
+            panel4.Controls.Add(button14);
+            panel4.Controls.Add(button13);
+            panel4.Controls.Add(panel7);
+            panel4.Controls.Add(panel6);
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(0, 324);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(925, 143);
+            panel4.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(dataGridView1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 46);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(359, 278);
+            panel1.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName, colQuantity, colPrice });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(359, 278);
+            dataGridView1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(button12);
+            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(button1);
+            panel3.Controls.Add(button8);
+            panel3.Controls.Add(button9);
+            panel3.Controls.Add(button7);
+            panel3.Controls.Add(button10);
+            panel3.Controls.Add(button6);
+            panel3.Controls.Add(button5);
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button11);
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(button4);
+            panel3.Dock = DockStyle.Right;
+            panel3.Location = new Point(704, 46);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(221, 278);
+            panel3.TabIndex = 3;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(154, 212);
+            button12.Name = "button12";
+            button12.Size = new Size(46, 50);
+            button12.TabIndex = 1;
+            button12.Text = "C";
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(20, 15);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(190, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(30, 44);
+            button1.Name = "button1";
+            button1.Size = new Size(46, 50);
+            button1.TabIndex = 1;
+            button1.Text = "7";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(92, 156);
+            button8.Name = "button8";
+            button8.Size = new Size(46, 50);
+            button8.TabIndex = 1;
+            button8.Text = "2";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(154, 156);
+            button9.Name = "button9";
+            button9.Size = new Size(46, 50);
+            button9.TabIndex = 1;
+            button9.Text = "3";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(30, 156);
+            button7.Name = "button7";
+            button7.Size = new Size(46, 50);
+            button7.TabIndex = 1;
+            button7.Text = "1";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(30, 212);
+            button10.Name = "button10";
+            button10.Size = new Size(46, 50);
+            button10.TabIndex = 1;
+            button10.Text = "0";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(154, 100);
+            button6.Name = "button6";
+            button6.Size = new Size(46, 50);
+            button6.TabIndex = 1;
+            button6.Text = "6";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(92, 100);
+            button5.Name = "button5";
+            button5.Size = new Size(46, 50);
+            button5.TabIndex = 1;
+            button5.Text = "5";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(92, 44);
+            button2.Name = "button2";
+            button2.Size = new Size(46, 50);
+            button2.TabIndex = 1;
+            button2.Text = "8";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(92, 212);
+            button11.Name = "button11";
+            button11.Size = new Size(46, 50);
+            button11.TabIndex = 1;
+            button11.Text = ".";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(154, 44);
+            button3.Name = "button3";
+            button3.Size = new Size(46, 50);
+            button3.TabIndex = 1;
+            button3.Text = "9";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(30, 100);
+            button4.Name = "button4";
+            button4.Size = new Size(46, 50);
+            button4.TabIndex = 1;
+            button4.Text = "4";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(flowLayoutPanel1);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(359, 46);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(345, 278);
+            panel5.TabIndex = 4;
+            // 
+            // colName
+            // 
+            dataGridViewCellStyle2.BackColor = Color.Lime;
+            colName.DefaultCellStyle = dataGridViewCellStyle2;
+            colName.HeaderText = "Name";
+            colName.Name = "colName";
+            colName.ReadOnly = true;
+            colName.Width = 64;
+            // 
+            // colQuantity
+            // 
+            colQuantity.HeaderText = "Quantity";
+            colQuantity.Name = "colQuantity";
+            colQuantity.ReadOnly = true;
+            colQuantity.Width = 78;
+            // 
+            // colPrice
+            // 
+            colPrice.HeaderText = "Price";
+            colPrice.Name = "colPrice";
+            colPrice.ReadOnly = true;
+            colPrice.Width = 58;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(345, 278);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(80, 30);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(146, 23);
+            textBox2.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(15, 33);
+            label3.Name = "label3";
+            label3.Size = new Size(59, 15);
+            label3.TabIndex = 1;
+            label3.Text = "Sub Total:";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(80, 59);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(146, 23);
+            textBox3.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 62);
+            label4.Name = "label4";
+            label4.Size = new Size(30, 15);
+            label4.TabIndex = 1;
+            label4.Text = "Tax: ";
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(textBox2);
+            panel6.Controls.Add(label4);
+            panel6.Controls.Add(textBox3);
+            panel6.Controls.Add(label3);
+            panel6.Dock = DockStyle.Left;
+            panel6.Location = new Point(0, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(246, 143);
+            panel6.TabIndex = 2;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(textBox5);
+            panel7.Controls.Add(label7);
+            panel7.Controls.Add(label6);
+            panel7.Controls.Add(label5);
+            panel7.Controls.Add(textBox6);
+            panel7.Controls.Add(textBox4);
+            panel7.Dock = DockStyle.Left;
+            panel7.Location = new Point(246, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(298, 143);
+            panel7.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(48, 36);
+            label5.Name = "label5";
+            label5.Size = new Size(60, 15);
+            label5.TabIndex = 1;
+            label5.Text = "Payment: ";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(113, 62);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(146, 23);
+            textBox4.TabIndex = 0;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(48, 65);
+            label6.Name = "label6";
+            label6.Size = new Size(47, 15);
+            label6.TabIndex = 1;
+            label6.Text = "Money:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(113, 33);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(146, 23);
+            textBox5.TabIndex = 0;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(113, 91);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(146, 23);
+            textBox6.TabIndex = 0;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(48, 94);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 15);
+            label7.TabIndex = 1;
+            label7.Text = "Change:";
+            // 
+            // button13
+            // 
+            button13.Location = new Point(585, 62);
+            button13.Name = "button13";
+            button13.Size = new Size(75, 23);
+            button13.TabIndex = 4;
+            button13.Text = "Save";
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(666, 62);
+            button14.Name = "button14";
+            button14.Size = new Size(75, 23);
+            button14.TabIndex = 4;
+            button14.Text = "Pay";
+            button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(666, 91);
+            button15.Name = "button15";
+            button15.Size = new Size(75, 23);
+            button15.TabIndex = 4;
+            button15.Text = "Reciept";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(758, 90);
+            button16.Name = "button16";
+            button16.Size = new Size(75, 23);
+            button16.TabIndex = 4;
+            button16.Text = "Clear";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(758, 62);
+            button17.Name = "button17";
+            button17.Size = new Size(75, 23);
+            button17.TabIndex = 4;
+            button17.Text = "Remove";
+            button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(847, 62);
+            button18.Name = "button18";
+            button18.Size = new Size(75, 23);
+            button18.TabIndex = 4;
+            button18.Text = "Cancel";
+            button18.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            button19.Location = new Point(847, 91);
+            button19.Name = "button19";
+            button19.Size = new Size(75, 23);
+            button19.TabIndex = 4;
+            button19.Text = "Exit";
+            button19.UseVisualStyleBackColor = true;
+            // 
+            // frmCashier
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(925, 467);
+            Controls.Add(panel5);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
+            Controls.Add(panel4);
+            Controls.Add(panel2);
+            Name = "frmCashier";
+            Text = "frmCashier";
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+        private Panel panel2;
+        private Label label1;
+        private Label label2;
+        private Panel panel4;
+        private Panel panel1;
+        private Panel panel3;
+        private Button button12;
+        private TextBox textBox1;
+        private Button button1;
+        private Button button8;
+        private Button button9;
+        private Button button7;
+        private Button button10;
+        private Button button6;
+        private Button button5;
+        private Button button2;
+        private Button button11;
+        private Button button3;
+        private Button button4;
+        private Panel panel5;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colQuantity;
+        private DataGridViewTextBoxColumn colPrice;
+        private Panel panel6;
+        private Label label4;
+        private Label label3;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button button14;
+        private Button button13;
+        private Panel panel7;
+        private TextBox textBox5;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private TextBox textBox6;
+        private TextBox textBox4;
+        private Button button19;
+        private Button button18;
+        private Button button17;
+        private Button button16;
+        private Button button15;
+    }
+}

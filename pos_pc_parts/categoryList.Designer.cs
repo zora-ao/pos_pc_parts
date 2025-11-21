@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label2 = new Label();
+            btnClearCat = new Button();
             txtAddCat = new TextBox();
-            btnSaveCat = new Button();
             btnUpdateCat = new Button();
-            btnCancelCat = new Button();
             label1 = new Label();
+            label2 = new Label();
+            btnSaveCat = new Button();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             colId = new DataGridViewTextBoxColumn();
@@ -49,7 +49,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(btnCancelCat);
+            panel1.Controls.Add(btnClearCat);
             panel1.Controls.Add(txtAddCat);
             panel1.Controls.Add(btnUpdateCat);
             panel1.Controls.Add(label1);
@@ -61,6 +61,42 @@
             panel1.Size = new Size(608, 86);
             panel1.TabIndex = 0;
             // 
+            // btnClearCat
+            // 
+            btnClearCat.Location = new Point(495, 41);
+            btnClearCat.Name = "btnClearCat";
+            btnClearCat.Size = new Size(75, 23);
+            btnClearCat.TabIndex = 3;
+            btnClearCat.Text = "Clear";
+            btnClearCat.UseVisualStyleBackColor = true;
+            btnClearCat.Click += btnClearCat_Click;
+            // 
+            // txtAddCat
+            // 
+            txtAddCat.Location = new Point(73, 42);
+            txtAddCat.Name = "txtAddCat";
+            txtAddCat.Size = new Size(255, 23);
+            txtAddCat.TabIndex = 2;
+            // 
+            // btnUpdateCat
+            // 
+            btnUpdateCat.Location = new Point(415, 41);
+            btnUpdateCat.Name = "btnUpdateCat";
+            btnUpdateCat.Size = new Size(75, 23);
+            btnUpdateCat.TabIndex = 3;
+            btnUpdateCat.Text = "Update";
+            btnUpdateCat.UseVisualStyleBackColor = true;
+            btnUpdateCat.Click += btnUpdateCat_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(248, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Add Category";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -69,13 +105,6 @@
             label2.Size = new Size(55, 15);
             label2.TabIndex = 1;
             label2.Text = "Category";
-            // 
-            // txtAddCat
-            // 
-            txtAddCat.Location = new Point(73, 42);
-            txtAddCat.Name = "txtAddCat";
-            txtAddCat.Size = new Size(255, 23);
-            txtAddCat.TabIndex = 2;
             // 
             // btnSaveCat
             // 
@@ -86,33 +115,6 @@
             btnSaveCat.Text = "Save";
             btnSaveCat.UseVisualStyleBackColor = true;
             btnSaveCat.Click += btnSaveCat_Click;
-            // 
-            // btnUpdateCat
-            // 
-            btnUpdateCat.Location = new Point(415, 41);
-            btnUpdateCat.Name = "btnUpdateCat";
-            btnUpdateCat.Size = new Size(75, 23);
-            btnUpdateCat.TabIndex = 3;
-            btnUpdateCat.Text = "Update";
-            btnUpdateCat.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelCat
-            // 
-            btnCancelCat.Location = new Point(495, 41);
-            btnCancelCat.Name = "btnCancelCat";
-            btnCancelCat.Size = new Size(75, 23);
-            btnCancelCat.TabIndex = 3;
-            btnCancelCat.Text = "Clear";
-            btnCancelCat.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(248, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Add Category";
             // 
             // panel2
             // 
@@ -136,6 +138,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(608, 188);
             dataGridView1.TabIndex = 5;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // colId
             // 
@@ -194,7 +197,7 @@
         private TextBox txtAddCat;
         private Button btnSaveCat;
         private Button btnUpdateCat;
-        private Button btnCancelCat;
+        private Button btnClearCat;
         private Label label1;
         private Panel panel2;
         private DataGridView dataGridView1;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel3 = new Panel();
             panel4 = new Panel();
             lbTotalItems = new Label();
@@ -42,8 +43,6 @@
             colCategory = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
             colQuantity = new DataGridViewTextBoxColumn();
-            colEdit = new DataGridViewImageColumn();
-            colDelete = new DataGridViewImageColumn();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -133,8 +132,16 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colCategory, colPrice, colQuantity, colEdit, colDelete });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colCategory, colPrice, colQuantity });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 154);
             dataGridView1.Name = "dataGridView1";
@@ -174,26 +181,6 @@
             colQuantity.Name = "colQuantity";
             colQuantity.ReadOnly = true;
             // 
-            // colEdit
-            // 
-            colEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            colEdit.HeaderText = "Edit";
-            colEdit.Image = Properties.Resources.edit;
-            colEdit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            colEdit.Name = "colEdit";
-            colEdit.ReadOnly = true;
-            colEdit.Width = 33;
-            // 
-            // colDelete
-            // 
-            colDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            colDelete.HeaderText = "Delete";
-            colDelete.Image = Properties.Resources.trash_2;
-            colDelete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            colDelete.Name = "colDelete";
-            colDelete.ReadOnly = true;
-            colDelete.Width = 46;
-            // 
             // dashboardContents
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -229,7 +216,5 @@
         private DataGridViewTextBoxColumn colCategory;
         private DataGridViewTextBoxColumn colPrice;
         private DataGridViewTextBoxColumn colQuantity;
-        private DataGridViewImageColumn colEdit;
-        private DataGridViewImageColumn colDelete;
     }
 }

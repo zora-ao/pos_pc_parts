@@ -32,6 +32,7 @@
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
+            button2 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             button3 = new Button();
@@ -68,6 +69,7 @@
             // panel2
             // 
             panel2.BackColor = Color.CornflowerBlue;
+            panel2.Controls.Add(button2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(button3);
@@ -79,6 +81,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(148, 505);
             panel2.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(23, 352);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 0;
+            button2.Text = "POS";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
@@ -177,5 +189,6 @@
         private PictureBox pictureBox2;
         private Label label1;
         private Panel admin_main_panel;
+        private Button button2;
     }
 }

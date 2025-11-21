@@ -24,6 +24,8 @@ namespace pos_pc_parts
 
         public void loadCategory()
         {
+            dataGridView1.Rows.Clear();
+
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
@@ -38,20 +40,32 @@ namespace pos_pc_parts
                     );
             }
             dr.Close();
+            cn.Close();
         }
 
         private void btnSaveCat_Click(object sender, EventArgs e)
         {
             try
             {
+                if (txtAddCat.Text == "")
+                {
+                    MessageBox.Show("Please enter category name.");
+                    return;
+                }
+                ;
+
+                txtAddCat.Clear();
+
                 cn = new MySqlConnection(dbcon.GetConnection());
 
                 cn.Open();
 
-                cm = new MySqlCommand("INSERT INTO category(category_name)VALUES(@category_name)", cn);
-                cm.Parameters.AddWithValue("@category_name", txtAddCat.Text);
+                cm = new MySqlCommand("INSERT INTO categories(name) VALUES(@name)", cn);
+                cm.Parameters.AddWithValue("@name", txtAddCat.Text);
                 cm.ExecuteNonQuery();
 
+                loadCategory();
+                MessageBox.Show("Category has been successfully added.");
                 cn.Close();
 
             }
@@ -59,6 +73,59 @@ namespace pos_pc_parts
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnClearCat_Click(object sender, EventArgs e)
+        {
+            txtAddCat.Clear();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+
+            if (colName == "Edit")
+            {
+                btnSaveCat.Enabled = false;
+                txtAddCat.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+            else if (colName == "Delete")
+            {
+                btnUpdateCat.Enabled = false;
+                if (MessageBox.Show("Are you sure you want to delete this category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn = new MySqlConnection(dbcon.GetConnection());
+                    cn.Open();
+                    cm = new MySqlCommand("DELETE FROM categories WHERE id=@id", cn);
+                    cm.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    loadCategory();
+                    MessageBox.Show("Category has been successfully deleted.");
+                }
+            }
+
+        }
+
+        private void btnUpdateCat_Click(object sender, EventArgs e)
+        {
+            if (txtAddCat.Text == "")
+            {
+                MessageBox.Show("Please enter category name.");
+                return;
+            }
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+
+            cm = new MySqlCommand("UPDATE categories SET name=@name WHERE id=@id", cn);
+            cm.Parameters.AddWithValue("@name", txtAddCat.Text);
+            cm.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            cm.ExecuteNonQuery();
+            loadCategory();
+            MessageBox.Show("Category has been successfully updated.");
+
+
+            cn.Close();
         }
     }
 }

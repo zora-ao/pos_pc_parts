@@ -38,7 +38,7 @@
             colEdit = new DataGridViewImageColumn();
             colDelete = new DataGridViewImageColumn();
             panel2 = new Panel();
-            button2 = new Button();
+            btnBrowse = new Button();
             btnClear = new Button();
             btnSave = new Button();
             btnUpdate = new Button();
@@ -51,6 +51,7 @@
             txtPrice = new TextBox();
             txtQuantity = new TextBox();
             txtProductName = new TextBox();
+            txtImagePath = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -135,7 +136,8 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(txtImagePath);
+            panel2.Controls.Add(btnBrowse);
             panel2.Controls.Add(btnClear);
             panel2.Controls.Add(btnSave);
             panel2.Controls.Add(btnUpdate);
@@ -154,14 +156,15 @@
             panel2.Size = new Size(684, 219);
             panel2.TabIndex = 1;
             // 
-            // button2
+            // btnBrowse
             // 
-            button2.Location = new Point(483, 134);
-            button2.Name = "button2";
-            button2.Size = new Size(99, 26);
-            button2.TabIndex = 4;
-            button2.Text = "Browse Image";
-            button2.UseVisualStyleBackColor = true;
+            btnBrowse.Location = new Point(482, 146);
+            btnBrowse.Name = "btnBrowse";
+            btnBrowse.Size = new Size(99, 26);
+            btnBrowse.TabIndex = 4;
+            btnBrowse.Text = "Browse Image";
+            btnBrowse.UseVisualStyleBackColor = true;
+            btnBrowse.Click += btnBrowse_Click;
             // 
             // btnClear
             // 
@@ -171,6 +174,7 @@
             btnClear.TabIndex = 4;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnSave
             // 
@@ -190,10 +194,11 @@
             btnUpdate.TabIndex = 4;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(442, 15);
+            pictureBox1.Location = new Point(442, 27);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(182, 113);
             pictureBox1.TabIndex = 3;
@@ -264,6 +269,15 @@
             txtProductName.Size = new Size(197, 23);
             txtProductName.TabIndex = 0;
             // 
+            // txtImagePath
+            // 
+            txtImagePath.AutoSize = true;
+            txtImagePath.Location = new Point(513, 9);
+            txtImagePath.Name = "txtImagePath";
+            txtImagePath.Size = new Size(38, 15);
+            txtImagePath.TabIndex = 5;
+            txtImagePath.Text = "label3";
+            // 
             // AddProducts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -303,9 +317,10 @@
         private TextBox txtQuantity;
         private TextBox txtProductName;
         private PictureBox pictureBox1;
-        private Button button2;
+        private Button btnBrowse;
         private Button btnClear;
         private Button btnSave;
         private Button btnUpdate;
+        private Label txtImagePath;
     }
 }
