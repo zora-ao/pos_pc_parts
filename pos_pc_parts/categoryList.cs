@@ -51,10 +51,7 @@ namespace pos_pc_parts
                 {
                     MessageBox.Show("Please enter category name.");
                     return;
-                }
-                ;
-
-                txtAddCat.Clear();
+                };
 
                 cn = new MySqlConnection(dbcon.GetConnection());
 
@@ -64,9 +61,11 @@ namespace pos_pc_parts
                 cm.Parameters.AddWithValue("@name", txtAddCat.Text);
                 cm.ExecuteNonQuery();
 
+                cn.Close();
+
                 loadCategory();
                 MessageBox.Show("Category has been successfully added.");
-                cn.Close();
+                txtAddCat.Clear();
 
             }
             catch (Exception ex)
@@ -84,12 +83,13 @@ namespace pos_pc_parts
         {
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
 
-            if (colName == "Edit")
+            if (colName == "colEdit")
             {
                 btnSaveCat.Enabled = false;
+                btnUpdateCat.Enabled = true;
                 txtAddCat.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
-            else if (colName == "Delete")
+            else if (colName == "colDelete")
             {
                 btnUpdateCat.Enabled = false;
                 if (MessageBox.Show("Are you sure you want to delete this category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -123,7 +123,7 @@ namespace pos_pc_parts
             cm.ExecuteNonQuery();
             loadCategory();
             MessageBox.Show("Category has been successfully updated.");
-
+            btnClearCat.PerformClick();
 
             cn.Close();
         }

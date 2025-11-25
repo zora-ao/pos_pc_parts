@@ -38,6 +38,7 @@ namespace pos_pc_parts
             {
                 dataGridView1.Rows.Add(
                     dr["product_id"].ToString(),
+                    dr["image_path"].ToString(),
                     dr["product_name"].ToString(),
                     dr["category"].ToString(),
                     dr["price"].ToString(),
@@ -96,11 +97,23 @@ namespace pos_pc_parts
                 btnUpdate.Enabled = true;
                 btnSave.Enabled = false;
 
-                txtProductName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                comboCategories.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtPrice.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtQuantity.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtProductName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value?.ToString() ?? "";
+                comboCategories.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "";
+                txtPrice.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString() ?? "";
+                txtQuantity.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "";
+
+                string imageFile = dataGridView1.Rows[e.RowIndex].Cells[1].Value?.ToString() ?? "no-image.jpg";
+                string imgPath = Path.Combine(Application.StartupPath, "Images", imageFile);
+
+                if (!File.Exists(imgPath))
+                {
+                    imgPath = Path.Combine(Application.StartupPath, "Images", "no-image.jpg");
+                }
+
+                pictureBox1.Image = Image.FromFile(imgPath);
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             }
+
             cn.Close();
         }
 
@@ -149,8 +162,17 @@ namespace pos_pc_parts
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
-            cm = new MySqlCommand("UPDATE products SET product_name = @name, category = @category, price = @price, quantity = @quantity WHERE product_id = @product_id", cn);
+            string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? "no-image.jpg" : txtImagePath.Text;
+
+            if (txtProductName.Text == "" || txtPrice.Text == "" || txtQuantity.Text == "" || comboCategories.Text == "")
+            {
+                MessageBox.Show("Please complete the input needed!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            cm = new MySqlCommand("UPDATE products SET product_name = @name, image_path = @img, category = @category, price = @price, quantity = @quantity WHERE product_id = @product_id", cn);
             cm.Parameters.AddWithValue("@name", txtProductName.Text);
+            cm.Parameters.AddWithValue("@img", imagePath);
             cm.Parameters.AddWithValue("@category", comboCategories.Text);
             cm.Parameters.AddWithValue("@price", txtPrice.Text);
             cm.Parameters.AddWithValue("@quantity", txtQuantity.Text);
@@ -171,7 +193,7 @@ namespace pos_pc_parts
             comboCategories.Text = "";
             txtPrice.Text = "";
             txtQuantity.Text = "";
-
+            pictureBox1.Image = null;
 
             btnSave.Enabled = false;
             btnUpdate.Enabled = true;
@@ -184,21 +206,20 @@ namespace pos_pc_parts
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                // Copy selected file into Images folder
+                
                 string destFolder = Path.Combine(Application.StartupPath, "Images");
                 if (!Directory.Exists(destFolder))
                 {
-                    Directory.CreateDirectory(destFolder); // create folder if not exist
+                    Directory.CreateDirectory(destFolder); 
                 }
 
                 string dest = Path.Combine(destFolder, Path.GetFileName(ofd.FileName));
                 File.Copy(ofd.FileName, dest, true);
 
-                // Load image into PictureBox
+                
                 pictureBox1.Image = Image.FromFile(dest);
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-                // Optional: store file name in a TextBox to save in database
                 txtImagePath.Text = Path.GetFileName(dest);
 
 
