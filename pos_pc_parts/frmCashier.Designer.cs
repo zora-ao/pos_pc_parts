@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel2 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -329,11 +329,12 @@
             dataGridViewCart.ReadOnly = true;
             dataGridViewCart.Size = new Size(359, 322);
             dataGridViewCart.TabIndex = 0;
+            dataGridViewCart.CellContentClick += dataGridViewCart_CellContentClick;
             // 
             // colName
             // 
-            dataGridViewCellStyle2.BackColor = Color.Lime;
-            colName.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = Color.Lime;
+            colName.DefaultCellStyle = dataGridViewCellStyle1;
             colName.HeaderText = "Name";
             colName.Name = "colName";
             colName.ReadOnly = true;
