@@ -20,7 +20,18 @@ namespace pos_pc_parts
         public frmCashier()
         {
             InitializeComponent();
+
+            // Suppose your buttons are named btn0, btn1, ..., btn9
+            Button[] numberButtons = { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
+
+            foreach (Button btn in numberButtons)
+            {
+                btn.Click += btnNumber_Click;
+            }
+
+
             loadProducts();
+            LoadPendingItems();
         }
 
         public void loadProducts()
@@ -164,10 +175,9 @@ namespace pos_pc_parts
                     dataGridViewCart.Rows.Add(
                         dr["product_name"].ToString(),
                         dr["quantity"].ToString(),
-                        Convert.ToDecimal(dr["price"]).ToString("N2"),
-                        Convert.ToDecimal(dr["subtotal"]).ToString("N2")
+                        Convert.ToDecimal(dr["price"]).ToString("N2")
                         );
-                     subTotals += Convert.ToDecimal(dr["subtotal"]);
+                    subTotals += Convert.ToDecimal(dr["subtotal"]);
                 }
 
                 txtSubTotal.Text = subTotals.ToString();
@@ -182,6 +192,68 @@ namespace pos_pc_parts
             }
         }
 
+        private void btnNumber_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            txtAmount.Text += btn.Text;
+        }
 
+        private void btnDecimal_Click(object sender, EventArgs e)
+        {
+            if (!txtAmount.Text.Contains("."))
+            {
+                if (txtAmount.Text == "")
+                    txtAmount.Text = "0.";
+                else
+                    txtAmount.Text += ".";
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtAmount.Text = "";
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (txtAmount.Text.Length > 0)
+                txtAmount.Text = txtAmount.Text.Remove(txtAmount.Text.Length - 1);
+        }
+
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtAmount.Text, out decimal amount))
+            {
+                MessageBox.Show("Amount entered: ₱ " + amount.ToString("N2"));
+
+                if (amount < Convert.ToDecimal(txtSubTotal.Text))
+                {
+                    MessageBox.Show("Insufficient amount!");
+                    return;
+                }
+
+                if (amount == Convert.ToDecimal(txtSubTotal.Text))
+                {
+                    lbCustomerChanged.Text = "Change: ₱ 0.00";
+                    return;
+                }
+
+                if (comboPayment.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please select a payment method.");
+                    return;
+                }
+
+                lbCutomerMoney.Text = "Customer: ₱ " + amount.ToString("N2");
+                txtAmount.Text = "";
+
+                decimal change = amount - Convert.ToDecimal(txtSubTotal.Text);
+                lbCustomerChanged.Text = "Change: ₱ " + change;
+            }
+            else
+            {
+                MessageBox.Show("Invalid amount!");
+            }
+        }
     }
 }

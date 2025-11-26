@@ -93,6 +93,26 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minus_circle {
+            get {
+                object obj = ResourceManager.GetObject("minus-circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus_circle {
+            get {
+                object obj = ResourceManager.GetObject("plus-circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trash_2 {
             get {
                 object obj = ResourceManager.GetObject("trash-2", resourceCulture);
