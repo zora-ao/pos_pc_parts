@@ -34,11 +34,9 @@
             label1 = new Label();
             panel4 = new Panel();
             button19 = new Button();
-            button18 = new Button();
             button17 = new Button();
-            button16 = new Button();
-            button15 = new Button();
-            button14 = new Button();
+            btnClearCart = new Button();
+            btnPay = new Button();
             button13 = new Button();
             panel7 = new Panel();
             comboPayment = new ComboBox();
@@ -54,6 +52,7 @@
             label3 = new Label();
             panel1 = new Panel();
             dataGridViewCart = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
             colName = new DataGridViewTextBoxColumn();
             colQuantity = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
@@ -118,11 +117,9 @@
             // panel4
             // 
             panel4.Controls.Add(button19);
-            panel4.Controls.Add(button18);
             panel4.Controls.Add(button17);
-            panel4.Controls.Add(button16);
-            panel4.Controls.Add(button15);
-            panel4.Controls.Add(button14);
+            panel4.Controls.Add(btnClearCart);
+            panel4.Controls.Add(btnPay);
             panel4.Controls.Add(button13);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel6);
@@ -134,57 +131,42 @@
             // 
             // button19
             // 
-            button19.Location = new Point(835, 55);
+            button19.Location = new Point(840, 108);
             button19.Name = "button19";
             button19.Size = new Size(75, 23);
             button19.TabIndex = 4;
             button19.Text = "Exit";
             button19.UseVisualStyleBackColor = true;
             // 
-            // button18
-            // 
-            button18.Location = new Point(835, 26);
-            button18.Name = "button18";
-            button18.Size = new Size(75, 23);
-            button18.TabIndex = 4;
-            button18.Text = "Cancel";
-            button18.UseVisualStyleBackColor = true;
-            // 
             // button17
             // 
-            button17.Location = new Point(746, 26);
+            button17.Location = new Point(666, 28);
             button17.Name = "button17";
             button17.Size = new Size(75, 23);
             button17.TabIndex = 4;
             button17.Text = "Remove";
             button17.UseVisualStyleBackColor = true;
+            button17.Click += button17_Click;
             // 
-            // button16
+            // btnClearCart
             // 
-            button16.Location = new Point(746, 54);
-            button16.Name = "button16";
-            button16.Size = new Size(75, 23);
-            button16.TabIndex = 4;
-            button16.Text = "Clear";
-            button16.UseVisualStyleBackColor = true;
+            btnClearCart.Location = new Point(666, 62);
+            btnClearCart.Name = "btnClearCart";
+            btnClearCart.Size = new Size(75, 23);
+            btnClearCart.TabIndex = 4;
+            btnClearCart.Text = "Clear";
+            btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.Click += btnClearCart_Click;
             // 
-            // button15
+            // btnPay
             // 
-            button15.Location = new Point(654, 55);
-            button15.Name = "button15";
-            button15.Size = new Size(75, 23);
-            button15.TabIndex = 4;
-            button15.Text = "Reciept";
-            button15.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            button14.Location = new Point(654, 26);
-            button14.Name = "button14";
-            button14.Size = new Size(75, 23);
-            button14.TabIndex = 4;
-            button14.Text = "Pay";
-            button14.UseVisualStyleBackColor = true;
+            btnPay.Location = new Point(573, 61);
+            btnPay.Name = "btnPay";
+            btnPay.Size = new Size(75, 23);
+            btnPay.TabIndex = 4;
+            btnPay.Text = "Pay";
+            btnPay.UseVisualStyleBackColor = true;
+            btnPay.Click += btnPay_Click;
             // 
             // button13
             // 
@@ -322,7 +304,7 @@
             dataGridViewCart.AllowUserToDeleteRows = false;
             dataGridViewCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { colName, colQuantity, colPrice, colIncrease, colDecrease });
+            dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colQuantity, colPrice, colIncrease, colDecrease });
             dataGridViewCart.Dock = DockStyle.Fill;
             dataGridViewCart.Location = new Point(0, 0);
             dataGridViewCart.Name = "dataGridViewCart";
@@ -330,6 +312,14 @@
             dataGridViewCart.Size = new Size(359, 322);
             dataGridViewCart.TabIndex = 0;
             dataGridViewCart.CellContentClick += dataGridViewCart_CellContentClick;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Visible = false;
+            colId.Width = 19;
             // 
             // colName
             // 
@@ -608,7 +598,7 @@
         private TextBox txtTax;
         private TextBox txtSubTotal;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button14;
+        private Button btnPay;
         private Button button13;
         private Panel panel7;
         private Label label7;
@@ -617,17 +607,18 @@
         private Button button19;
         private Button button18;
         private Button button17;
-        private Button button16;
+        private Button btnClearCart;
         private Button button15;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colQuantity;
-        private DataGridViewTextBoxColumn colPrice;
-        private DataGridViewImageColumn colIncrease;
-        private DataGridViewImageColumn colDecrease;
         private ComboBox comboPayment;
         private Label lbCustomerChanged;
         private Label lbCutomerMoney;
         private Button btnEnter;
         private Button btnBack;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colQuantity;
+        private DataGridViewTextBoxColumn colPrice;
+        private DataGridViewImageColumn colIncrease;
+        private DataGridViewImageColumn colDecrease;
     }
 }
