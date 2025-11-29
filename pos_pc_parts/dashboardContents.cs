@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace pos_pc_parts
 {
@@ -11,6 +12,9 @@ namespace pos_pc_parts
         {
             InitializeComponent();
             CountProducts();
+            countStocks();
+            todaySales();
+            overAllSales();
         }
 
 
@@ -29,6 +33,42 @@ namespace pos_pc_parts
             cn.Close();
 
 
+        }
+
+        public void countStocks()
+        {
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+
+            cm = new MySqlCommand("SELECT SUM(quantity) FROM products", cn);
+            int totalStocks = Convert.ToInt32(cm.ExecuteScalar());
+            lbTotalStock.Text = totalStocks.ToString();
+
+
+            cn.Close();
+        }
+
+        public void todaySales()
+        {
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+            cm = new MySqlCommand("SELECT SUM(total) FROM transactions WHERE DATE(date_sold) = CURDATE()", cn);
+            object result = cm.ExecuteScalar();
+
+            decimal totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
+            lbSalesToday.Text = totalSales.ToString("C2");
+            cn.Close();
+        }
+
+        public void overAllSales()
+        {
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+            cm = new MySqlCommand("SELECT SUM(total) FROM transactions", cn);
+            object result = cm.ExecuteScalar();
+            decimal totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
+            lbOverallSales.Text = totalSales.ToString("C2");
+            cn.Close();
         }
 
 

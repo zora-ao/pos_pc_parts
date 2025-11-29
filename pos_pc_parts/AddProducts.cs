@@ -52,14 +52,18 @@ namespace pos_pc_parts
 
         public void comboCat()
         {
+
+            comboCategories.Items = Array.Empty<string>();
+
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
             MySqlCommand cm = new MySqlCommand("SELECT name FROM categories", cn);
             MySqlDataReader dr = cm.ExecuteReader();
 
+
             while (dr.Read())
             {
-                comboCategories.Items.Add(dr["name"].ToString());
+                comboCategories.AddItem(dr["name"].ToString());
             }
             dr.Close();
             cn.Close();
@@ -97,10 +101,10 @@ namespace pos_pc_parts
                 btnUpdate.Enabled = true;
                 btnSave.Enabled = false;
 
-                txtProductName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value?.ToString() ?? "";
-                comboCategories.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "";
-                txtPrice.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString() ?? "";
-                txtQuantity.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "";
+                txtProductName.Content = dataGridView1.Rows[e.RowIndex].Cells[2].Value?.ToString() ?? "";
+                comboCategories.SelectedItem = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "";
+                txtPrice.Content = dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString() ?? "";
+                txtQuantity.Content = dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "";
 
                 string imageFile = dataGridView1.Rows[e.RowIndex].Cells[1].Value?.ToString() ?? "no-image.jpg";
                 string imgPath = Path.Combine(Application.StartupPath, "Images", imageFile);
@@ -110,8 +114,8 @@ namespace pos_pc_parts
                     imgPath = Path.Combine(Application.StartupPath, "Images", "no-image.jpg");
                 }
 
-                pictureBox1.Image = Image.FromFile(imgPath);
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox1.Content = Image.FromFile(imgPath);
+
             }
 
             cn.Close();
@@ -119,7 +123,7 @@ namespace pos_pc_parts
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtProductName.Text == "" || txtPrice.Text == "" || txtQuantity.Text == "" || comboCategories.Text == "")
+            if (txtProductName.Content == "" || txtPrice.Content == "" || txtQuantity.Content == "" || comboCategories.SelectedItem == "")
             {
                 MessageBox.Show("Please complete the input needed!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -132,10 +136,10 @@ namespace pos_pc_parts
             string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? "no-image.jpg" : txtImagePath.Text;
             cm = new MySqlCommand("INSERT INTO products (product_name, image_path, category, price, quantity) VALUES (@name, @image_path ,@category, @price, @quantity)", cn);
 
-            cm.Parameters.AddWithValue("@name", txtProductName.Text);
-            cm.Parameters.AddWithValue("@category", comboCategories.Text);
-            cm.Parameters.AddWithValue("@price", txtPrice.Text);
-            cm.Parameters.AddWithValue("@quantity", txtQuantity.Text);
+            cm.Parameters.AddWithValue("@name", txtProductName.Content);
+            cm.Parameters.AddWithValue("@category", comboCategories.SelectedItem);
+            cm.Parameters.AddWithValue("@price", txtPrice.Content);
+            cm.Parameters.AddWithValue("@quantity", txtQuantity.Content);
             cm.Parameters.AddWithValue("@image_path", imagePath);
             cm.ExecuteNonQuery();
 
@@ -164,18 +168,18 @@ namespace pos_pc_parts
 
             string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? "no-image.jpg" : txtImagePath.Text;
 
-            if (txtProductName.Text == "" || txtPrice.Text == "" || txtQuantity.Text == "" || comboCategories.Text == "")
+            if (txtProductName.Content == "" || txtPrice.Content == "" || txtQuantity.Content == "" || comboCategories.SelectedItem == "")
             {
                 MessageBox.Show("Please complete the input needed!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             cm = new MySqlCommand("UPDATE products SET product_name = @name, image_path = @img, category = @category, price = @price, quantity = @quantity WHERE product_id = @product_id", cn);
-            cm.Parameters.AddWithValue("@name", txtProductName.Text);
+            cm.Parameters.AddWithValue("@name", txtProductName.Content);
             cm.Parameters.AddWithValue("@img", imagePath);
-            cm.Parameters.AddWithValue("@category", comboCategories.Text);
-            cm.Parameters.AddWithValue("@price", txtPrice.Text);
-            cm.Parameters.AddWithValue("@quantity", txtQuantity.Text);
+            cm.Parameters.AddWithValue("@category", comboCategories.SelectedItem);
+            cm.Parameters.AddWithValue("@price", txtPrice.Content);
+            cm.Parameters.AddWithValue("@quantity", txtQuantity.Content);
             cm.Parameters.AddWithValue("@product_id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
             cm.ExecuteNonQuery();
 
@@ -189,11 +193,11 @@ namespace pos_pc_parts
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtProductName.Text = "";
-            comboCategories.Text = "";
-            txtPrice.Text = "";
-            txtQuantity.Text = "";
-            pictureBox1.Image = null;
+            txtProductName.Content = "";
+            comboCategories.SelectedItem = "";
+            txtPrice.Content = "";
+            txtQuantity.Content = "";
+            pictureBox1.Content = null;
 
             btnSave.Enabled = false;
             btnUpdate.Enabled = true;
@@ -206,24 +210,25 @@ namespace pos_pc_parts
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                
+
                 string destFolder = Path.Combine(Application.StartupPath, "Images");
                 if (!Directory.Exists(destFolder))
                 {
-                    Directory.CreateDirectory(destFolder); 
+                    Directory.CreateDirectory(destFolder);
                 }
 
                 string dest = Path.Combine(destFolder, Path.GetFileName(ofd.FileName));
                 File.Copy(ofd.FileName, dest, true);
 
-                
-                pictureBox1.Image = Image.FromFile(dest);
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+                pictureBox1.Content = Image.FromFile(dest);
 
                 txtImagePath.Text = Path.GetFileName(dest);
 
 
             }
         }
+
+        
     }
 }

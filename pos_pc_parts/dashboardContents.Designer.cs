@@ -31,13 +31,13 @@
             panel3 = new Panel();
             cuiPanel4 = new CuoreUI.Controls.cuiPanel();
             cuiLabel4 = new CuoreUI.Controls.cuiLabel();
-            label3 = new Label();
+            lbOverallSales = new Label();
             cuiPanel3 = new CuoreUI.Controls.cuiPanel();
             cuiLabel3 = new CuoreUI.Controls.cuiLabel();
-            label2 = new Label();
+            lbSalesToday = new Label();
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
             cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            label1 = new Label();
+            lbTotalStock = new Label();
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
             cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             lbTotalItems = new Label();
@@ -62,9 +62,8 @@
             // 
             // cuiPanel4
             // 
-            cuiPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cuiPanel4.Controls.Add(cuiLabel4);
-            cuiPanel4.Controls.Add(label3);
+            cuiPanel4.Controls.Add(lbOverallSales);
             cuiPanel4.Location = new Point(522, 23);
             cuiPanel4.Name = "cuiPanel4";
             cuiPanel4.OutlineThickness = 1F;
@@ -88,23 +87,23 @@
             cuiLabel4.TabIndex = 3;
             cuiLabel4.VerticalAlignment = StringAlignment.Near;
             // 
-            // label3
+            // lbOverallSales
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(40, 56);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 30);
-            label3.TabIndex = 0;
-            label3.Text = "25";
+            lbOverallSales.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbOverallSales.AutoSize = true;
+            lbOverallSales.BackColor = Color.Transparent;
+            lbOverallSales.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            lbOverallSales.ForeColor = Color.White;
+            lbOverallSales.Location = new Point(6, 56);
+            lbOverallSales.Name = "lbOverallSales";
+            lbOverallSales.Size = new Size(25, 19);
+            lbOverallSales.TabIndex = 0;
+            lbOverallSales.Text = "25";
             // 
             // cuiPanel3
             // 
             cuiPanel3.Controls.Add(cuiLabel3);
-            cuiPanel3.Controls.Add(label2);
+            cuiPanel3.Controls.Add(lbSalesToday);
             cuiPanel3.Location = new Point(361, 23);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 1F;
@@ -128,23 +127,23 @@
             cuiLabel3.TabIndex = 3;
             cuiLabel3.VerticalAlignment = StringAlignment.Near;
             // 
-            // label2
+            // lbSalesToday
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(40, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(39, 30);
-            label2.TabIndex = 0;
-            label2.Text = "25";
+            lbSalesToday.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbSalesToday.AutoSize = true;
+            lbSalesToday.BackColor = Color.Transparent;
+            lbSalesToday.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            lbSalesToday.ForeColor = Color.White;
+            lbSalesToday.Location = new Point(6, 56);
+            lbSalesToday.Name = "lbSalesToday";
+            lbSalesToday.Size = new Size(25, 19);
+            lbSalesToday.TabIndex = 0;
+            lbSalesToday.Text = "25";
             // 
             // cuiPanel2
             // 
             cuiPanel2.Controls.Add(cuiLabel2);
-            cuiPanel2.Controls.Add(label1);
+            cuiPanel2.Controls.Add(lbTotalStock);
             cuiPanel2.Location = new Point(192, 23);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 1F;
@@ -168,18 +167,18 @@
             cuiLabel2.TabIndex = 3;
             cuiLabel2.VerticalAlignment = StringAlignment.Near;
             // 
-            // label1
+            // lbTotalStock
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(40, 56);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 30);
-            label1.TabIndex = 0;
-            label1.Text = "25";
+            lbTotalStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbTotalStock.AutoSize = true;
+            lbTotalStock.BackColor = Color.Transparent;
+            lbTotalStock.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            lbTotalStock.ForeColor = Color.White;
+            lbTotalStock.Location = new Point(6, 56);
+            lbTotalStock.Name = "lbTotalStock";
+            lbTotalStock.Size = new Size(25, 19);
+            lbTotalStock.TabIndex = 0;
+            lbTotalStock.Text = "25";
             // 
             // cuiPanel1
             // 
@@ -213,11 +212,11 @@
             lbTotalItems.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbTotalItems.AutoSize = true;
             lbTotalItems.BackColor = Color.Transparent;
-            lbTotalItems.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTotalItems.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
             lbTotalItems.ForeColor = Color.White;
-            lbTotalItems.Location = new Point(40, 56);
+            lbTotalItems.Location = new Point(6, 56);
             lbTotalItems.Name = "lbTotalItems";
-            lbTotalItems.Size = new Size(39, 30);
+            lbTotalItems.Size = new Size(25, 19);
             lbTotalItems.TabIndex = 0;
             lbTotalItems.Text = "25";
             // 
@@ -251,13 +250,13 @@
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private CuoreUI.Controls.cuiPanel cuiPanel4;
         private CuoreUI.Controls.cuiLabel cuiLabel4;
-        private Label label3;
+        private Label lbOverallSales;
         private CuoreUI.Controls.cuiPanel cuiPanel3;
         private CuoreUI.Controls.cuiLabel cuiLabel3;
-        private Label label2;
+        private Label lbSalesToday;
         private CuoreUI.Controls.cuiPanel cuiPanel2;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
-        private Label label1;
+        private Label lbTotalStock;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
     }
 }

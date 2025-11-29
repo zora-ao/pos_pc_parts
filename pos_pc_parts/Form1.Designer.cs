@@ -45,13 +45,13 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.CornflowerBlue;
-            panel1.BackgroundImage = Properties.Resources.unsplash_0aWZdK8nK2I;
+            panel1.BackColor = Color.Transparent;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(900, 58);
+            panel1.Size = new Size(900, 44);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -66,14 +66,14 @@
             panel2.Controls.Add(btnCategory);
             panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 58);
+            panel2.Location = new Point(0, 44);
             panel2.Name = "panel2";
-            panel2.Size = new Size(172, 492);
+            panel2.Size = new Size(185, 506);
             panel2.TabIndex = 1;
             // 
             // button2
             // 
-            button2.Location = new Point(49, 352);
+            button2.Location = new Point(46, 396);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 0;
@@ -85,70 +85,79 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(56, 102);
             label1.Name = "label1";
-            label1.Size = new Size(61, 21);
+            label1.Size = new Size(55, 23);
             label1.TabIndex = 2;
             label1.Text = "Admin";
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(35, 33);
+            pictureBox1.Location = new Point(26, 27);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(102, 66);
+            pictureBox1.Size = new Size(125, 72);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // button3
             // 
-            button3.Location = new Point(26, 222);
+            button3.Image = Properties.Resources.package;
+            button3.Location = new Point(26, 208);
             button3.Name = "button3";
-            button3.Size = new Size(121, 38);
+            button3.Size = new Size(135, 59);
             button3.TabIndex = 0;
             button3.Text = "Add Products";
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(35, 440);
+            button4.Image = Properties.Resources.log_out;
+            button4.Location = new Point(26, 451);
             button4.Name = "button4";
-            button4.Size = new Size(102, 38);
+            button4.Size = new Size(125, 43);
             button4.TabIndex = 0;
             button4.Text = "Logout";
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = true;
             // 
             // btnCategory
             // 
-            btnCategory.Location = new Point(26, 279);
+            btnCategory.Image = Properties.Resources.list;
+            btnCategory.Location = new Point(26, 277);
             btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(121, 38);
+            btnCategory.Size = new Size(135, 59);
             btnCategory.TabIndex = 0;
             btnCategory.Text = "Manage Category";
+            btnCategory.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCategory.UseVisualStyleBackColor = true;
             btnCategory.Click += btnCategory_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(26, 165);
+            button1.Image = Properties.Resources.clipboard;
+            button1.Location = new Point(26, 139);
             button1.Name = "button1";
-            button1.Size = new Size(121, 38);
+            button1.Size = new Size(135, 59);
             button1.TabIndex = 0;
             button1.Text = "Dashboard";
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // admin_main_panel
             // 
             admin_main_panel.Dock = DockStyle.Fill;
-            admin_main_panel.Location = new Point(172, 58);
+            admin_main_panel.Location = new Point(185, 44);
             admin_main_panel.Name = "admin_main_panel";
-            admin_main_panel.Size = new Size(728, 492);
+            admin_main_panel.Size = new Size(715, 506);
             admin_main_panel.TabIndex = 2;
             // 
             // Form1
