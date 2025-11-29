@@ -63,6 +63,16 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arcticons_mts_pay {
+            get {
+                object obj = ResourceManager.GetObject("arcticons_mts-pay", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close {
             get {
                 object obj = ResourceManager.GetObject("Close", resourceCulture);
@@ -93,6 +103,16 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mdi_cart_remove {
+            get {
+                object obj = ResourceManager.GetObject("mdi_cart-remove", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus_circle {
             get {
                 object obj = ResourceManager.GetObject("minus-circle", resourceCulture);
@@ -113,9 +133,39 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tdesign_clear {
+            get {
+                object obj = ResourceManager.GetObject("tdesign_clear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trash_2 {
             get {
                 object obj = ResourceManager.GetObject("trash-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unsplash_0aWZdK8nK2I {
+            get {
+                object obj = ResourceManager.GetObject("unsplash_0aWZdK8nK2I", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vaadin_exit_o {
+            get {
+                object obj = ResourceManager.GetObject("vaadin_exit-o", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -30,25 +30,23 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel2 = new Panel();
-            label2 = new Label();
-            label1 = new Label();
+            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             panel4 = new Panel();
             button19 = new Button();
             button17 = new Button();
             btnClearCart = new Button();
             btnPay = new Button();
-            button13 = new Button();
             panel7 = new Panel();
-            comboPayment = new ComboBox();
+            comboPayment = new CuoreUI.Controls.cuiComboBox();
             lbCustomerChanged = new Label();
             lbCutomerMoney = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             panel6 = new Panel();
-            txtSubTotal = new TextBox();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            txtSubTotal = new CuoreUI.Controls.cuiTextBox();
             label4 = new Label();
-            txtTax = new TextBox();
             label3 = new Label();
             panel1 = new Panel();
             dataGridViewCart = new DataGridView();
@@ -59,10 +57,10 @@
             colIncrease = new DataGridViewImageColumn();
             colDecrease = new DataGridViewImageColumn();
             panel3 = new Panel();
+            txtAmount = new CuoreUI.Controls.cuiTextBox();
             btnEnter = new Button();
             btnBack = new Button();
             btnClear = new Button();
-            txtAmount = new TextBox();
             btn7 = new Button();
             btn2 = new Button();
             btn3 = new Button();
@@ -88,97 +86,108 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
+            panel2.BackColor = Color.SlateGray;
+            panel2.Controls.Add(cuiLabel1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(925, 46);
+            panel2.Size = new Size(954, 46);
             panel2.TabIndex = 1;
             // 
-            // label2
+            // cuiLabel1
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(94, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(29, 15);
-            label2.TabIndex = 0;
-            label2.Text = "Jose";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(39, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(49, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Cashier:";
+            cuiLabel1.Content = "Jose";
+            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel1.Location = new Point(95, 12);
+            cuiLabel1.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel1.Name = "cuiLabel1";
+            cuiLabel1.Size = new Size(62, 23);
+            cuiLabel1.TabIndex = 1;
+            cuiLabel1.VerticalAlignment = StringAlignment.Near;
             // 
             // panel4
             // 
+            panel4.BackColor = Color.SlateGray;
             panel4.Controls.Add(button19);
             panel4.Controls.Add(button17);
             panel4.Controls.Add(btnClearCart);
             panel4.Controls.Add(btnPay);
-            panel4.Controls.Add(button13);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel6);
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(0, 368);
+            panel4.Location = new Point(0, 374);
             panel4.Name = "panel4";
-            panel4.Size = new Size(925, 143);
+            panel4.Size = new Size(954, 137);
             panel4.TabIndex = 1;
             // 
             // button19
             // 
-            button19.Location = new Point(840, 108);
+            button19.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button19.BackColor = Color.Transparent;
+            button19.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button19.ForeColor = Color.Maroon;
+            button19.Image = Properties.Resources.vaadin_exit_o;
+            button19.Location = new Point(897, 71);
             button19.Name = "button19";
-            button19.Size = new Size(75, 23);
+            button19.Size = new Size(57, 66);
             button19.TabIndex = 4;
             button19.Text = "Exit";
-            button19.UseVisualStyleBackColor = true;
+            button19.TextImageRelation = TextImageRelation.ImageAboveText;
+            button19.UseVisualStyleBackColor = false;
+            button19.Click += button19_Click;
             // 
             // button17
             // 
-            button17.Location = new Point(666, 28);
+            button17.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button17.BackColor = Color.IndianRed;
+            button17.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button17.Image = Properties.Resources.mdi_cart_remove;
+            button17.ImageAlign = ContentAlignment.BottomCenter;
+            button17.Location = new Point(695, 34);
             button17.Name = "button17";
-            button17.Size = new Size(75, 23);
+            button17.Size = new Size(75, 82);
             button17.TabIndex = 4;
             button17.Text = "Remove";
-            button17.UseVisualStyleBackColor = true;
+            button17.TextAlign = ContentAlignment.BottomCenter;
+            button17.TextImageRelation = TextImageRelation.ImageAboveText;
+            button17.UseVisualStyleBackColor = false;
             button17.Click += button17_Click;
             // 
             // btnClearCart
             // 
-            btnClearCart.Location = new Point(666, 62);
+            btnClearCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnClearCart.BackColor = Color.YellowGreen;
+            btnClearCart.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClearCart.Image = Properties.Resources.tdesign_clear;
+            btnClearCart.ImageAlign = ContentAlignment.BottomCenter;
+            btnClearCart.Location = new Point(776, 34);
             btnClearCart.Name = "btnClearCart";
-            btnClearCart.Size = new Size(75, 23);
+            btnClearCart.Size = new Size(75, 82);
             btnClearCart.TabIndex = 4;
             btnClearCart.Text = "Clear";
-            btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.TextAlign = ContentAlignment.BottomCenter;
+            btnClearCart.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnClearCart.UseVisualStyleBackColor = false;
             btnClearCart.Click += btnClearCart_Click;
             // 
             // btnPay
             // 
-            btnPay.Location = new Point(573, 61);
+            btnPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPay.BackColor = Color.Khaki;
+            btnPay.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPay.Image = Properties.Resources.arcticons_mts_pay;
+            btnPay.Location = new Point(623, 34);
             btnPay.Name = "btnPay";
-            btnPay.Size = new Size(75, 23);
+            btnPay.Size = new Size(66, 82);
             btnPay.TabIndex = 4;
             btnPay.Text = "Pay";
-            btnPay.UseVisualStyleBackColor = true;
+            btnPay.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnPay.UseVisualStyleBackColor = false;
             btnPay.Click += btnPay_Click;
-            // 
-            // button13
-            // 
-            button13.Location = new Point(573, 26);
-            button13.Name = "button13";
-            button13.Size = new Size(75, 23);
-            button13.TabIndex = 4;
-            button13.Text = "Save";
-            button13.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
+            panel7.BackColor = Color.SlateGray;
             panel7.Controls.Add(comboPayment);
             panel7.Controls.Add(lbCustomerChanged);
             panel7.Controls.Add(lbCutomerMoney);
@@ -186,106 +195,176 @@
             panel7.Controls.Add(label6);
             panel7.Controls.Add(label5);
             panel7.Dock = DockStyle.Left;
-            panel7.Location = new Point(246, 0);
+            panel7.Font = new Font("Microsoft Sans Serif", 12F);
+            panel7.Location = new Point(320, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(298, 143);
+            panel7.Size = new Size(262, 137);
             panel7.TabIndex = 3;
             // 
             // comboPayment
             // 
-            comboPayment.FormattingEnabled = true;
-            comboPayment.Items.AddRange(new object[] { "Cash", "Gcash", "Credit", "Paymaya" });
-            comboPayment.Location = new Point(113, 33);
+            comboPayment.BackgroundColor = Color.FromArgb(255, 255, 255);
+            comboPayment.DropDownBackgroundColor = Color.White;
+            comboPayment.DropDownForeColor = Color.FromArgb(27, 27, 27);
+            comboPayment.ExpandArrowColor = Color.Gray;
+            comboPayment.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboPayment.ForeColor = Color.Gray;
+            comboPayment.Items = new string[]
+    {
+    "Cash",
+    "Gcash",
+    "Paymaya",
+    "Credit"
+    };
+            comboPayment.Location = new Point(114, 12);
+            comboPayment.Margin = new Padding(5, 4, 5, 4);
             comboPayment.Name = "comboPayment";
-            comboPayment.Size = new Size(121, 23);
+            comboPayment.NoSelectionText = "None";
+            comboPayment.OutlineColor = Color.FromArgb(64, 128, 128, 128);
+            comboPayment.OutlineThickness = 1F;
+            comboPayment.Rounding = 5;
+            comboPayment.SelectedIndex = -1;
+            comboPayment.SelectedItem = "";
+            comboPayment.Size = new Size(112, 34);
+            comboPayment.SortAlphabetically = true;
             comboPayment.TabIndex = 3;
             // 
             // lbCustomerChanged
             // 
             lbCustomerChanged.AutoSize = true;
-            lbCustomerChanged.Location = new Point(101, 94);
+            lbCustomerChanged.Font = new Font("Microsoft Sans Serif", 12F);
+            lbCustomerChanged.Location = new Point(114, 99);
             lbCustomerChanged.Name = "lbCustomerChanged";
-            lbCustomerChanged.Size = new Size(28, 15);
+            lbCustomerChanged.Size = new Size(40, 20);
             lbCustomerChanged.TabIndex = 2;
             lbCustomerChanged.Text = "0.00";
             // 
             // lbCutomerMoney
             // 
             lbCutomerMoney.AutoSize = true;
-            lbCutomerMoney.Location = new Point(101, 65);
+            lbCutomerMoney.Font = new Font("Microsoft Sans Serif", 12F);
+            lbCutomerMoney.Location = new Point(114, 66);
             lbCutomerMoney.Name = "lbCutomerMoney";
-            lbCutomerMoney.Size = new Size(28, 15);
+            lbCutomerMoney.Size = new Size(40, 20);
             lbCutomerMoney.TabIndex = 2;
             lbCutomerMoney.Text = "0.00";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(48, 94);
+            label7.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            label7.Location = new Point(31, 97);
             label7.Name = "label7";
-            label7.Size = new Size(51, 15);
+            label7.Size = new Size(70, 18);
             label7.TabIndex = 1;
             label7.Text = "Change:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(48, 65);
+            label6.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            label6.Location = new Point(31, 67);
             label6.Name = "label6";
-            label6.Size = new Size(47, 15);
+            label6.Size = new Size(63, 18);
             label6.TabIndex = 1;
             label6.Text = "Money:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(48, 36);
+            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            label5.Location = new Point(29, 28);
             label5.Name = "label5";
-            label5.Size = new Size(60, 15);
+            label5.Size = new Size(83, 18);
             label5.TabIndex = 1;
             label5.Text = "Payment: ";
             // 
             // panel6
             // 
+            panel6.BackColor = Color.SlateGray;
+            panel6.Controls.Add(cuiTextBox1);
             panel6.Controls.Add(txtSubTotal);
             panel6.Controls.Add(label4);
-            panel6.Controls.Add(txtTax);
             panel6.Controls.Add(label3);
             panel6.Dock = DockStyle.Left;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(246, 143);
+            panel6.Size = new Size(320, 137);
             panel6.TabIndex = 2;
+            // 
+            // cuiTextBox1
+            // 
+            cuiTextBox1.BackgroundColor = Color.White;
+            cuiTextBox1.Content = "";
+            cuiTextBox1.FocusBackgroundColor = Color.White;
+            cuiTextBox1.FocusImageTint = Color.White;
+            cuiTextBox1.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            cuiTextBox1.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox1.ForeColor = Color.Gray;
+            cuiTextBox1.Image = null;
+            cuiTextBox1.ImageExpand = new Point(0, 0);
+            cuiTextBox1.ImageOffset = new Point(0, 0);
+            cuiTextBox1.Location = new Point(100, 67);
+            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Multiline = false;
+            cuiTextBox1.Name = "cuiTextBox1";
+            cuiTextBox1.NormalImageTint = Color.White;
+            cuiTextBox1.OutlineColor = Color.FromArgb(128, 128, 128, 128);
+            cuiTextBox1.Padding = new Padding(16, 7, 16, 0);
+            cuiTextBox1.PasswordChar = false;
+            cuiTextBox1.PlaceholderColor = Color.LightGray;
+            cuiTextBox1.PlaceholderText = "";
+            cuiTextBox1.Rounding = new Padding(5);
+            cuiTextBox1.Size = new Size(175, 31);
+            cuiTextBox1.TabIndex = 2;
+            cuiTextBox1.TextOffset = new Size(0, 0);
+            cuiTextBox1.UnderlinedStyle = true;
             // 
             // txtSubTotal
             // 
-            txtSubTotal.Location = new Point(80, 30);
+            txtSubTotal.BackgroundColor = Color.White;
+            txtSubTotal.Content = "";
+            txtSubTotal.FocusBackgroundColor = Color.White;
+            txtSubTotal.FocusImageTint = Color.White;
+            txtSubTotal.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtSubTotal.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSubTotal.ForeColor = Color.Gray;
+            txtSubTotal.Image = null;
+            txtSubTotal.ImageExpand = new Point(0, 0);
+            txtSubTotal.ImageOffset = new Point(0, 0);
+            txtSubTotal.Location = new Point(100, 28);
+            txtSubTotal.Margin = new Padding(4);
+            txtSubTotal.Multiline = false;
             txtSubTotal.Name = "txtSubTotal";
-            txtSubTotal.Size = new Size(146, 23);
-            txtSubTotal.TabIndex = 0;
+            txtSubTotal.NormalImageTint = Color.White;
+            txtSubTotal.OutlineColor = Color.FromArgb(128, 128, 128, 128);
+            txtSubTotal.Padding = new Padding(16, 7, 16, 0);
+            txtSubTotal.PasswordChar = false;
+            txtSubTotal.PlaceholderColor = Color.LightGray;
+            txtSubTotal.PlaceholderText = "";
+            txtSubTotal.Rounding = new Padding(5);
+            txtSubTotal.Size = new Size(175, 31);
+            txtSubTotal.TabIndex = 2;
+            txtSubTotal.TextOffset = new Size(0, 0);
+            txtSubTotal.UnderlinedStyle = true;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(15, 62);
+            label4.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            label4.Location = new Point(48, 76);
             label4.Name = "label4";
-            label4.Size = new Size(30, 15);
+            label4.Size = new Size(40, 18);
             label4.TabIndex = 1;
             label4.Text = "Tax: ";
-            // 
-            // txtTax
-            // 
-            txtTax.Location = new Point(80, 59);
-            txtTax.Name = "txtTax";
-            txtTax.Size = new Size(146, 23);
-            txtTax.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
             label3.Location = new Point(15, 33);
             label3.Name = "label3";
-            label3.Size = new Size(59, 15);
+            label3.Size = new Size(78, 18);
             label3.TabIndex = 1;
             label3.Text = "Sub Total:";
             // 
@@ -295,21 +374,26 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 46);
             panel1.Name = "panel1";
-            panel1.Size = new Size(359, 322);
+            panel1.Size = new Size(359, 328);
             panel1.TabIndex = 2;
             // 
             // dataGridViewCart
             // 
             dataGridViewCart.AllowUserToAddRows = false;
             dataGridViewCart.AllowUserToDeleteRows = false;
-            dataGridViewCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCart.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCart.BorderStyle = BorderStyle.None;
+            dataGridViewCart.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colQuantity, colPrice, colIncrease, colDecrease });
             dataGridViewCart.Dock = DockStyle.Fill;
+            dataGridViewCart.GridColor = Color.IndianRed;
             dataGridViewCart.Location = new Point(0, 0);
             dataGridViewCart.Name = "dataGridViewCart";
             dataGridViewCart.ReadOnly = true;
-            dataGridViewCart.Size = new Size(359, 322);
+            dataGridViewCart.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridViewCart.Size = new Size(359, 328);
             dataGridViewCart.TabIndex = 0;
             dataGridViewCart.CellContentClick += dataGridViewCart_CellContentClick;
             // 
@@ -319,7 +403,6 @@
             colId.Name = "colId";
             colId.ReadOnly = true;
             colId.Visible = false;
-            colId.Width = 19;
             // 
             // colName
             // 
@@ -328,21 +411,20 @@
             colName.HeaderText = "Name";
             colName.Name = "colName";
             colName.ReadOnly = true;
-            colName.Width = 64;
             // 
             // colQuantity
             // 
-            colQuantity.HeaderText = "Quantity";
+            colQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            colQuantity.HeaderText = "Qty";
             colQuantity.Name = "colQuantity";
             colQuantity.ReadOnly = true;
-            colQuantity.Width = 78;
+            colQuantity.Width = 51;
             // 
             // colPrice
             // 
             colPrice.HeaderText = "Price";
             colPrice.Name = "colPrice";
             colPrice.ReadOnly = true;
-            colPrice.Width = 58;
             // 
             // colIncrease
             // 
@@ -366,10 +448,10 @@
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(txtAmount);
             panel3.Controls.Add(btnEnter);
             panel3.Controls.Add(btnBack);
             panel3.Controls.Add(btnClear);
-            panel3.Controls.Add(txtAmount);
             panel3.Controls.Add(btn7);
             panel3.Controls.Add(btn2);
             panel3.Controls.Add(btn3);
@@ -382,13 +464,42 @@
             panel3.Controls.Add(btn9);
             panel3.Controls.Add(btn4);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(704, 46);
+            panel3.Location = new Point(733, 46);
             panel3.Name = "panel3";
-            panel3.Size = new Size(221, 322);
+            panel3.Size = new Size(221, 328);
             panel3.TabIndex = 3;
+            // 
+            // txtAmount
+            // 
+            txtAmount.BackgroundColor = Color.White;
+            txtAmount.Content = "";
+            txtAmount.FocusBackgroundColor = Color.White;
+            txtAmount.FocusImageTint = Color.White;
+            txtAmount.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtAmount.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtAmount.ForeColor = Color.Gray;
+            txtAmount.Image = null;
+            txtAmount.ImageExpand = new Point(0, 0);
+            txtAmount.ImageOffset = new Point(0, 0);
+            txtAmount.Location = new Point(16, 6);
+            txtAmount.Margin = new Padding(4);
+            txtAmount.Multiline = false;
+            txtAmount.Name = "txtAmount";
+            txtAmount.NormalImageTint = Color.White;
+            txtAmount.OutlineColor = Color.FromArgb(128, 128, 128, 128);
+            txtAmount.Padding = new Padding(21, 5, 21, 0);
+            txtAmount.PasswordChar = false;
+            txtAmount.PlaceholderColor = Color.LightGray;
+            txtAmount.PlaceholderText = "Amount";
+            txtAmount.Rounding = new Padding(8);
+            txtAmount.Size = new Size(191, 31);
+            txtAmount.TabIndex = 1;
+            txtAmount.TextOffset = new Size(0, 0);
+            txtAmount.UnderlinedStyle = true;
             // 
             // btnEnter
             // 
+            btnEnter.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnEnter.Location = new Point(30, 268);
             btnEnter.Name = "btnEnter";
             btnEnter.Size = new Size(108, 47);
@@ -399,6 +510,7 @@
             // 
             // btnBack
             // 
+            btnBack.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnBack.Location = new Point(154, 265);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(46, 50);
@@ -409,6 +521,7 @@
             // 
             // btnClear
             // 
+            btnClear.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnClear.Location = new Point(154, 212);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(46, 50);
@@ -417,15 +530,9 @@
             btnClear.UseVisualStyleBackColor = true;
             btnClear.Click += btnClear_Click;
             // 
-            // txtAmount
-            // 
-            txtAmount.Location = new Point(20, 15);
-            txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(190, 23);
-            txtAmount.TabIndex = 0;
-            // 
             // btn7
             // 
+            btn7.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn7.Location = new Point(30, 44);
             btn7.Name = "btn7";
             btn7.Size = new Size(46, 50);
@@ -435,6 +542,7 @@
             // 
             // btn2
             // 
+            btn2.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn2.Location = new Point(92, 156);
             btn2.Name = "btn2";
             btn2.Size = new Size(46, 50);
@@ -444,6 +552,7 @@
             // 
             // btn3
             // 
+            btn3.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn3.Location = new Point(154, 156);
             btn3.Name = "btn3";
             btn3.Size = new Size(46, 50);
@@ -453,6 +562,7 @@
             // 
             // btn1
             // 
+            btn1.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn1.Location = new Point(30, 156);
             btn1.Name = "btn1";
             btn1.Size = new Size(46, 50);
@@ -462,6 +572,7 @@
             // 
             // btn0
             // 
+            btn0.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn0.Location = new Point(30, 212);
             btn0.Name = "btn0";
             btn0.Size = new Size(46, 50);
@@ -471,6 +582,7 @@
             // 
             // btn6
             // 
+            btn6.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn6.Location = new Point(154, 100);
             btn6.Name = "btn6";
             btn6.Size = new Size(46, 50);
@@ -480,6 +592,7 @@
             // 
             // btn5
             // 
+            btn5.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn5.Location = new Point(92, 100);
             btn5.Name = "btn5";
             btn5.Size = new Size(46, 50);
@@ -489,6 +602,7 @@
             // 
             // btn8
             // 
+            btn8.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn8.Location = new Point(92, 44);
             btn8.Name = "btn8";
             btn8.Size = new Size(46, 50);
@@ -498,6 +612,7 @@
             // 
             // btnDecimal
             // 
+            btnDecimal.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnDecimal.Location = new Point(92, 212);
             btnDecimal.Name = "btnDecimal";
             btnDecimal.Size = new Size(46, 50);
@@ -508,6 +623,7 @@
             // 
             // btn9
             // 
+            btn9.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn9.Location = new Point(154, 44);
             btn9.Name = "btn9";
             btn9.Size = new Size(46, 50);
@@ -517,6 +633,7 @@
             // 
             // btn4
             // 
+            btn4.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn4.Location = new Point(30, 100);
             btn4.Name = "btn4";
             btn4.Size = new Size(46, 50);
@@ -530,33 +647,34 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(359, 46);
             panel5.Name = "panel5";
-            panel5.Size = new Size(345, 322);
+            panel5.Size = new Size(374, 328);
             panel5.TabIndex = 4;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(345, 322);
+            flowLayoutPanel1.Size = new Size(374, 328);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // frmCashier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(925, 511);
+            ClientSize = new Size(954, 511);
             Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel4);
             Controls.Add(panel2);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "frmCashier";
             Text = "frmCashier";
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -565,20 +683,16 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewCart).EndInit();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private Panel panel2;
-        private Label label1;
-        private Label label2;
         private Panel panel4;
         private Panel panel1;
         private Panel panel3;
         private Button btnClear;
-        private TextBox txtAmount;
         private Button btn7;
         private Button btn2;
         private Button btn3;
@@ -595,11 +709,8 @@
         private Panel panel6;
         private Label label4;
         private Label label3;
-        private TextBox txtTax;
-        private TextBox txtSubTotal;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnPay;
-        private Button button13;
         private Panel panel7;
         private Label label7;
         private Label label6;
@@ -609,7 +720,6 @@
         private Button button17;
         private Button btnClearCart;
         private Button button15;
-        private ComboBox comboPayment;
         private Label lbCustomerChanged;
         private Label lbCutomerMoney;
         private Button btnEnter;
@@ -620,5 +730,10 @@
         private DataGridViewTextBoxColumn colPrice;
         private DataGridViewImageColumn colIncrease;
         private DataGridViewImageColumn colDecrease;
+        private CuoreUI.Controls.cuiTextBox txtAmount;
+        private CuoreUI.Controls.cuiComboBox comboPayment;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private CuoreUI.Controls.cuiTextBox txtSubTotal;
+        private CuoreUI.Controls.cuiLabel cuiLabel1;
     }
 }

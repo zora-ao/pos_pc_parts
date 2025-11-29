@@ -349,7 +349,7 @@ namespace pos_pc_parts
         private void btnPay_Click(object sender, EventArgs e)
         {
 
-          
+
             if (decimal.TryParse(lbCutomerMoney.Text, out decimal amount))
             {
 
@@ -363,7 +363,7 @@ namespace pos_pc_parts
 
                 if (amount == Convert.ToDecimal(txtSubTotal.Text))
                 {
-                    
+
                     lbCustomerChanged.Text = change.ToString("N2");
                 }
 
@@ -441,7 +441,7 @@ namespace pos_pc_parts
 
                 doc.Open();
 
-                
+
                 iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph(
                     "EZPC\n",
                     new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD)
@@ -455,7 +455,7 @@ namespace pos_pc_parts
                 doc.Add(new Paragraph("Cashier ID: " + currentCashierId));
                 doc.Add(new Paragraph("--------------------------------------"));
 
-                
+
                 cn = new MySqlConnection(dbcon.GetConnection());
                 cn.Open();
 
@@ -507,7 +507,7 @@ namespace pos_pc_parts
 
                 cn.Close();
 
-         
+
                 using (var pdfDoc = PdfiumViewer.PdfDocument.Load(fileName))
                 {
                     Form previewForm = new Form();
@@ -520,7 +520,7 @@ namespace pos_pc_parts
                     pdfViewer.Document = pdfDoc;
 
                     previewForm.Controls.Add(pdfViewer);
-                    previewForm.ShowDialog(); 
+                    previewForm.ShowDialog();
                 }
 
             }
@@ -531,6 +531,9 @@ namespace pos_pc_parts
 
         }
 
-
+        private void button19_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
