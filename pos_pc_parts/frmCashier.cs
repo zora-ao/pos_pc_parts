@@ -209,7 +209,7 @@ namespace pos_pc_parts
                     subTotals += Convert.ToDecimal(dr["subtotal"]);
                 }
 
-                txtSubTotal.Text = subTotals.ToString();
+                txtSubTotal.Content = subTotals.ToString();
 
 
 
@@ -224,40 +224,40 @@ namespace pos_pc_parts
         private void btnNumber_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            txtAmount.Text += btn.Text;
+            txtAmount.Content += btn.Text;
         }
 
         private void btnDecimal_Click(object sender, EventArgs e)
         {
-            if (!txtAmount.Text.Contains("."))
+            if (!txtAmount.Content.Contains("."))
             {
-                if (txtAmount.Text == "")
-                    txtAmount.Text = "0.";
+                if (txtAmount.Content == "")
+                    txtAmount.Content = "0.";
                 else
-                    txtAmount.Text += ".";
+                    txtAmount.Content += ".";
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtAmount.Text = "";
+            txtAmount.Content = "";
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if (txtAmount.Text.Length > 0)
-                txtAmount.Text = txtAmount.Text.Remove(txtAmount.Text.Length - 1);
+            if (txtAmount.Content.Length > 0)
+                txtAmount.Content = txtAmount.Content.Remove(txtAmount.Content.Length - 1);
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtAmount.Text, out decimal amount))
+            if (decimal.TryParse(txtAmount.Content, out decimal amount))
             {
                 MessageBox.Show("Amount entered: ₱ " + amount.ToString("N2"));
 
 
                 lbCutomerMoney.Text = amount.ToString("N2");
-                txtAmount.Text = "";
+                txtAmount.Content = "";
 
             }
             else
@@ -353,15 +353,15 @@ namespace pos_pc_parts
             if (decimal.TryParse(lbCutomerMoney.Text, out decimal amount))
             {
 
-                decimal change = amount - Convert.ToDecimal(txtSubTotal.Text);
+                decimal change = amount - Convert.ToDecimal(txtSubTotal.Content);
 
-                if (amount < Convert.ToDecimal(txtSubTotal.Text) || Convert.ToDecimal(txtSubTotal.Text) <= 0)
+                if (amount < Convert.ToDecimal(txtSubTotal.Content) || Convert.ToDecimal(txtSubTotal.Content) <= 0)
                 {
                     MessageBox.Show("Insufficient amount!");
                     return;
                 }
 
-                if (amount == Convert.ToDecimal(txtSubTotal.Text))
+                if (amount == Convert.ToDecimal(txtSubTotal.Content))
                 {
 
                     lbCustomerChanged.Text = change.ToString("N2");
@@ -375,7 +375,7 @@ namespace pos_pc_parts
 
 
                 lbCutomerMoney.Text = amount.ToString("N2");
-                txtAmount.Text = "";
+                txtAmount.Content = "";
 
                 lbCustomerChanged.Text = change.ToString();
 
@@ -388,7 +388,7 @@ namespace pos_pc_parts
                     cn
                 );
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@total", Convert.ToDecimal(txtSubTotal.Text));
+                cm.Parameters.AddWithValue("@total", Convert.ToDecimal(txtSubTotal.Content));
                 cm.Parameters.AddWithValue("@payment", comboPayment.SelectedItem.ToString());
                 int transactionId = Convert.ToInt32(cm.ExecuteScalar());
 

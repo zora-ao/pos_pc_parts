@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
-            pictureBox2 = new PictureBox();
             panel2 = new Panel();
             button2 = new Button();
             label1 = new Label();
@@ -40,8 +39,6 @@
             btnCategory = new Button();
             button1 = new Button();
             admin_main_panel = new Panel();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -49,26 +46,18 @@
             // panel1
             // 
             panel1.BackColor = Color.CornflowerBlue;
-            panel1.Controls.Add(pictureBox2);
+            panel1.BackgroundImage = Properties.Resources.unsplash_0aWZdK8nK2I;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(900, 45);
+            panel1.Size = new Size(900, 58);
             panel1.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.EZPC;
-            pictureBox2.Location = new Point(37, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(74, 21);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.CornflowerBlue;
+            panel2.BackColor = Color.FromArgb(69, 104, 130);
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
             panel2.Controls.Add(button2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
@@ -77,14 +66,14 @@
             panel2.Controls.Add(btnCategory);
             panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 45);
+            panel2.Location = new Point(0, 58);
             panel2.Name = "panel2";
-            panel2.Size = new Size(148, 505);
+            panel2.Size = new Size(172, 492);
             panel2.TabIndex = 1;
             // 
             // button2
             // 
-            button2.Location = new Point(23, 352);
+            button2.Location = new Point(49, 352);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 0;
@@ -95,8 +84,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(37, 102);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(56, 102);
             label1.Name = "label1";
             label1.Size = new Size(61, 21);
             label1.TabIndex = 2;
@@ -104,8 +95,9 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(21, 33);
+            pictureBox1.Location = new Point(35, 33);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(102, 66);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -114,7 +106,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(12, 222);
+            button3.Location = new Point(26, 222);
             button3.Name = "button3";
             button3.Size = new Size(121, 38);
             button3.TabIndex = 0;
@@ -124,7 +116,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(21, 440);
+            button4.Location = new Point(35, 440);
             button4.Name = "button4";
             button4.Size = new Size(102, 38);
             button4.TabIndex = 0;
@@ -133,7 +125,7 @@
             // 
             // btnCategory
             // 
-            btnCategory.Location = new Point(12, 279);
+            btnCategory.Location = new Point(26, 279);
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(121, 38);
             btnCategory.TabIndex = 0;
@@ -143,7 +135,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 165);
+            button1.Location = new Point(26, 165);
             button1.Name = "button1";
             button1.Size = new Size(121, 38);
             button1.TabIndex = 0;
@@ -154,9 +146,9 @@
             // admin_main_panel
             // 
             admin_main_panel.Dock = DockStyle.Fill;
-            admin_main_panel.Location = new Point(148, 45);
+            admin_main_panel.Location = new Point(172, 58);
             admin_main_panel.Name = "admin_main_panel";
-            admin_main_panel.Size = new Size(752, 505);
+            admin_main_panel.Size = new Size(728, 492);
             admin_main_panel.TabIndex = 2;
             // 
             // Form1
@@ -169,8 +161,6 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "Form1";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -186,7 +176,6 @@
         private Button button4;
         private Button btnCategory;
         private Button button1;
-        private PictureBox pictureBox2;
         private Label label1;
         private Panel admin_main_panel;
         private Button button2;

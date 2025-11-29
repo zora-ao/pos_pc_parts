@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel2 = new Panel();
+            cuiLabel2 = new CuoreUI.Controls.cuiLabel();
             cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             panel4 = new Panel();
             button19 = new Button();
@@ -87,18 +88,34 @@
             // panel2
             // 
             panel2.BackColor = Color.SlateGray;
+            panel2.Controls.Add(cuiLabel2);
             panel2.Controls.Add(cuiLabel1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(954, 46);
+            panel2.Size = new Size(996, 46);
             panel2.TabIndex = 1;
+            // 
+            // cuiLabel2
+            // 
+            cuiLabel2.Content = "Cashier:";
+            cuiLabel2.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            cuiLabel2.ForeColor = Color.White;
+            cuiLabel2.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel2.Location = new Point(15, 12);
+            cuiLabel2.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel2.Name = "cuiLabel2";
+            cuiLabel2.Size = new Size(84, 23);
+            cuiLabel2.TabIndex = 1;
+            cuiLabel2.VerticalAlignment = StringAlignment.Near;
             // 
             // cuiLabel1
             // 
             cuiLabel1.Content = "Jose";
+            cuiLabel1.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            cuiLabel1.ForeColor = Color.White;
             cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(95, 12);
+            cuiLabel1.Location = new Point(91, 12);
             cuiLabel1.Margin = new Padding(4, 3, 4, 3);
             cuiLabel1.Name = "cuiLabel1";
             cuiLabel1.Size = new Size(62, 23);
@@ -117,33 +134,37 @@
             panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Point(0, 374);
             panel4.Name = "panel4";
-            panel4.Size = new Size(954, 137);
+            panel4.Size = new Size(996, 137);
             panel4.TabIndex = 1;
             // 
             // button19
             // 
-            button19.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button19.Anchor = AnchorStyles.Right;
             button19.BackColor = Color.Transparent;
             button19.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button19.ForeColor = Color.Maroon;
             button19.Image = Properties.Resources.vaadin_exit_o;
-            button19.Location = new Point(897, 71);
+            button19.Location = new Point(943, 71);
             button19.Name = "button19";
-            button19.Size = new Size(57, 66);
+            button19.Size = new Size(53, 66);
             button19.TabIndex = 4;
             button19.Text = "Exit";
-            button19.TextImageRelation = TextImageRelation.ImageAboveText;
+            button19.TextImageRelation = TextImageRelation.TextAboveImage;
             button19.UseVisualStyleBackColor = false;
             button19.Click += button19_Click;
             // 
             // button17
             // 
-            button17.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button17.Anchor = AnchorStyles.Bottom;
             button17.BackColor = Color.IndianRed;
+            button17.FlatAppearance.CheckedBackColor = Color.Silver;
+            button17.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button17.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            button17.FlatStyle = FlatStyle.Flat;
             button17.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button17.Image = Properties.Resources.mdi_cart_remove;
             button17.ImageAlign = ContentAlignment.BottomCenter;
-            button17.Location = new Point(695, 34);
+            button17.Location = new Point(704, 36);
             button17.Name = "button17";
             button17.Size = new Size(75, 82);
             button17.TabIndex = 4;
@@ -155,12 +176,16 @@
             // 
             // btnClearCart
             // 
-            btnClearCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnClearCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClearCart.BackColor = Color.YellowGreen;
+            btnClearCart.FlatAppearance.CheckedBackColor = Color.Silver;
+            btnClearCart.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnClearCart.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            btnClearCart.FlatStyle = FlatStyle.Flat;
             btnClearCart.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClearCart.Image = Properties.Resources.tdesign_clear;
             btnClearCart.ImageAlign = ContentAlignment.BottomCenter;
-            btnClearCart.Location = new Point(776, 34);
+            btnClearCart.Location = new Point(806, 36);
             btnClearCart.Name = "btnClearCart";
             btnClearCart.Size = new Size(75, 82);
             btnClearCart.TabIndex = 4;
@@ -172,13 +197,17 @@
             // 
             // btnPay
             // 
-            btnPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnPay.BackColor = Color.Khaki;
+            btnPay.FlatAppearance.CheckedBackColor = Color.Silver;
+            btnPay.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnPay.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            btnPay.FlatStyle = FlatStyle.Flat;
             btnPay.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPay.Image = Properties.Resources.arcticons_mts_pay;
-            btnPay.Location = new Point(623, 34);
+            btnPay.Location = new Point(602, 36);
             btnPay.Name = "btnPay";
-            btnPay.Size = new Size(66, 82);
+            btnPay.Size = new Size(75, 82);
             btnPay.TabIndex = 4;
             btnPay.Text = "Pay";
             btnPay.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -188,6 +217,7 @@
             // panel7
             // 
             panel7.BackColor = Color.SlateGray;
+            panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(comboPayment);
             panel7.Controls.Add(lbCustomerChanged);
             panel7.Controls.Add(lbCutomerMoney);
@@ -207,8 +237,8 @@
             comboPayment.DropDownBackgroundColor = Color.White;
             comboPayment.DropDownForeColor = Color.FromArgb(27, 27, 27);
             comboPayment.ExpandArrowColor = Color.Gray;
-            comboPayment.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboPayment.ForeColor = Color.Gray;
+            comboPayment.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboPayment.ForeColor = Color.Black;
             comboPayment.Items = new string[]
     {
     "Cash",
@@ -216,8 +246,8 @@
     "Paymaya",
     "Credit"
     };
-            comboPayment.Location = new Point(114, 12);
-            comboPayment.Margin = new Padding(5, 4, 5, 4);
+            comboPayment.Location = new Point(114, 22);
+            comboPayment.Margin = new Padding(6, 4, 6, 4);
             comboPayment.Name = "comboPayment";
             comboPayment.NoSelectionText = "None";
             comboPayment.OutlineColor = Color.FromArgb(64, 128, 128, 128);
@@ -225,7 +255,7 @@
             comboPayment.Rounding = 5;
             comboPayment.SelectedIndex = -1;
             comboPayment.SelectedItem = "";
-            comboPayment.Size = new Size(112, 34);
+            comboPayment.Size = new Size(101, 36);
             comboPayment.SortAlphabetically = true;
             comboPayment.TabIndex = 3;
             // 
@@ -233,7 +263,7 @@
             // 
             lbCustomerChanged.AutoSize = true;
             lbCustomerChanged.Font = new Font("Microsoft Sans Serif", 12F);
-            lbCustomerChanged.Location = new Point(114, 99);
+            lbCustomerChanged.Location = new Point(114, 97);
             lbCustomerChanged.Name = "lbCustomerChanged";
             lbCustomerChanged.Size = new Size(40, 20);
             lbCustomerChanged.TabIndex = 2;
@@ -243,7 +273,7 @@
             // 
             lbCutomerMoney.AutoSize = true;
             lbCutomerMoney.Font = new Font("Microsoft Sans Serif", 12F);
-            lbCutomerMoney.Location = new Point(114, 66);
+            lbCutomerMoney.Location = new Point(114, 65);
             lbCutomerMoney.Name = "lbCutomerMoney";
             lbCutomerMoney.Size = new Size(40, 20);
             lbCutomerMoney.TabIndex = 2;
@@ -252,30 +282,30 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            label7.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             label7.Location = new Point(31, 97);
             label7.Name = "label7";
-            label7.Size = new Size(70, 18);
+            label7.Size = new Size(67, 21);
             label7.TabIndex = 1;
             label7.Text = "Change:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            label6.Location = new Point(31, 67);
+            label6.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
+            label6.Location = new Point(39, 65);
             label6.Name = "label6";
-            label6.Size = new Size(63, 18);
+            label6.Size = new Size(62, 21);
             label6.TabIndex = 1;
             label6.Text = "Money:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            label5.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             label5.Location = new Point(29, 28);
             label5.Name = "label5";
-            label5.Size = new Size(83, 18);
+            label5.Size = new Size(83, 21);
             label5.TabIndex = 1;
             label5.Text = "Payment: ";
             // 
@@ -298,9 +328,9 @@
             cuiTextBox1.Content = "";
             cuiTextBox1.FocusBackgroundColor = Color.White;
             cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            cuiTextBox1.FocusOutlineColor = Color.FromArgb(224, 224, 224);
             cuiTextBox1.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
+            cuiTextBox1.ForeColor = Color.Black;
             cuiTextBox1.Image = null;
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
@@ -326,9 +356,9 @@
             txtSubTotal.Content = "";
             txtSubTotal.FocusBackgroundColor = Color.White;
             txtSubTotal.FocusImageTint = Color.White;
-            txtSubTotal.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtSubTotal.FocusOutlineColor = Color.FromArgb(224, 224, 224);
             txtSubTotal.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSubTotal.ForeColor = Color.Gray;
+            txtSubTotal.ForeColor = Color.Black;
             txtSubTotal.Image = null;
             txtSubTotal.ImageExpand = new Point(0, 0);
             txtSubTotal.ImageOffset = new Point(0, 0);
@@ -351,20 +381,20 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            label4.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             label4.Location = new Point(48, 76);
             label4.Name = "label4";
-            label4.Size = new Size(40, 18);
+            label4.Size = new Size(51, 21);
             label4.TabIndex = 1;
             label4.Text = "Tax: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            label3.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             label3.Location = new Point(15, 33);
             label3.Name = "label3";
-            label3.Size = new Size(78, 18);
+            label3.Size = new Size(88, 21);
             label3.TabIndex = 1;
             label3.Text = "Sub Total:";
             // 
@@ -447,6 +477,7 @@
             // 
             // panel3
             // 
+            panel3.BackColor = Color.SlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(txtAmount);
             panel3.Controls.Add(btnEnter);
@@ -464,7 +495,7 @@
             panel3.Controls.Add(btn9);
             panel3.Controls.Add(btn4);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(733, 46);
+            panel3.Location = new Point(775, 46);
             panel3.Name = "panel3";
             panel3.Size = new Size(221, 328);
             panel3.TabIndex = 3;
@@ -475,9 +506,9 @@
             txtAmount.Content = "";
             txtAmount.FocusBackgroundColor = Color.White;
             txtAmount.FocusImageTint = Color.White;
-            txtAmount.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtAmount.FocusOutlineColor = Color.DarkKhaki;
             txtAmount.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtAmount.ForeColor = Color.Gray;
+            txtAmount.ForeColor = Color.Black;
             txtAmount.Image = null;
             txtAmount.ImageExpand = new Point(0, 0);
             txtAmount.ImageOffset = new Point(0, 0);
@@ -499,147 +530,191 @@
             // 
             // btnEnter
             // 
+            btnEnter.BackColor = Color.Khaki;
+            btnEnter.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnEnter.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btnEnter.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnEnter.Location = new Point(30, 268);
             btnEnter.Name = "btnEnter";
             btnEnter.Size = new Size(108, 47);
             btnEnter.TabIndex = 2;
             btnEnter.Text = "Enter";
-            btnEnter.UseVisualStyleBackColor = true;
+            btnEnter.UseVisualStyleBackColor = false;
             btnEnter.Click += btnEnter_Click;
             // 
             // btnBack
             // 
+            btnBack.BackColor = Color.Khaki;
+            btnBack.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnBack.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btnBack.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnBack.Location = new Point(154, 265);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(46, 50);
             btnBack.TabIndex = 1;
             btnBack.Text = "<";
-            btnBack.UseVisualStyleBackColor = true;
+            btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
             // btnClear
             // 
+            btnClear.BackColor = Color.Khaki;
+            btnClear.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnClear.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btnClear.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnClear.Location = new Point(154, 212);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(46, 50);
             btnClear.TabIndex = 1;
             btnClear.Text = "C";
-            btnClear.UseVisualStyleBackColor = true;
+            btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
             // btn7
             // 
+            btn7.BackColor = Color.Khaki;
+            btn7.Cursor = Cursors.Cross;
+            btn7.FlatAppearance.BorderColor = Color.Red;
+            btn7.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            btn7.FlatAppearance.MouseOverBackColor = Color.LightGray;
             btn7.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn7.Location = new Point(30, 44);
             btn7.Name = "btn7";
             btn7.Size = new Size(46, 50);
             btn7.TabIndex = 1;
             btn7.Text = "7";
-            btn7.UseVisualStyleBackColor = true;
+            btn7.UseVisualStyleBackColor = false;
             // 
             // btn2
             // 
+            btn2.BackColor = Color.Khaki;
+            btn2.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn2.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn2.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn2.Location = new Point(92, 156);
             btn2.Name = "btn2";
             btn2.Size = new Size(46, 50);
             btn2.TabIndex = 1;
             btn2.Text = "2";
-            btn2.UseVisualStyleBackColor = true;
+            btn2.UseVisualStyleBackColor = false;
             // 
             // btn3
             // 
+            btn3.BackColor = Color.Khaki;
+            btn3.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn3.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn3.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn3.Location = new Point(154, 156);
             btn3.Name = "btn3";
             btn3.Size = new Size(46, 50);
             btn3.TabIndex = 1;
             btn3.Text = "3";
-            btn3.UseVisualStyleBackColor = true;
+            btn3.UseVisualStyleBackColor = false;
             // 
             // btn1
             // 
+            btn1.BackColor = Color.Khaki;
+            btn1.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn1.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn1.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn1.Location = new Point(30, 156);
             btn1.Name = "btn1";
             btn1.Size = new Size(46, 50);
             btn1.TabIndex = 1;
             btn1.Text = "1";
-            btn1.UseVisualStyleBackColor = true;
+            btn1.UseVisualStyleBackColor = false;
             // 
             // btn0
             // 
+            btn0.BackColor = Color.Khaki;
+            btn0.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn0.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn0.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn0.Location = new Point(30, 212);
             btn0.Name = "btn0";
             btn0.Size = new Size(46, 50);
             btn0.TabIndex = 1;
             btn0.Text = "0";
-            btn0.UseVisualStyleBackColor = true;
+            btn0.UseVisualStyleBackColor = false;
             // 
             // btn6
             // 
+            btn6.BackColor = Color.Khaki;
+            btn6.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn6.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn6.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn6.Location = new Point(154, 100);
             btn6.Name = "btn6";
             btn6.Size = new Size(46, 50);
             btn6.TabIndex = 1;
             btn6.Text = "6";
-            btn6.UseVisualStyleBackColor = true;
+            btn6.UseVisualStyleBackColor = false;
             // 
             // btn5
             // 
+            btn5.BackColor = Color.Khaki;
+            btn5.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn5.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn5.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn5.Location = new Point(92, 100);
             btn5.Name = "btn5";
             btn5.Size = new Size(46, 50);
             btn5.TabIndex = 1;
             btn5.Text = "5";
-            btn5.UseVisualStyleBackColor = true;
+            btn5.UseVisualStyleBackColor = false;
             // 
             // btn8
             // 
+            btn8.BackColor = Color.Khaki;
+            btn8.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn8.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn8.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn8.Location = new Point(92, 44);
             btn8.Name = "btn8";
             btn8.Size = new Size(46, 50);
             btn8.TabIndex = 1;
             btn8.Text = "8";
-            btn8.UseVisualStyleBackColor = true;
+            btn8.UseVisualStyleBackColor = false;
             // 
             // btnDecimal
             // 
+            btnDecimal.BackColor = Color.Khaki;
+            btnDecimal.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnDecimal.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btnDecimal.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btnDecimal.Location = new Point(92, 212);
             btnDecimal.Name = "btnDecimal";
             btnDecimal.Size = new Size(46, 50);
             btnDecimal.TabIndex = 1;
             btnDecimal.Text = ".";
-            btnDecimal.UseVisualStyleBackColor = true;
+            btnDecimal.UseVisualStyleBackColor = false;
             btnDecimal.Click += btnDecimal_Click;
             // 
             // btn9
             // 
+            btn9.BackColor = Color.Khaki;
+            btn9.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn9.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn9.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn9.Location = new Point(154, 44);
             btn9.Name = "btn9";
             btn9.Size = new Size(46, 50);
             btn9.TabIndex = 1;
             btn9.Text = "9";
-            btn9.UseVisualStyleBackColor = true;
+            btn9.UseVisualStyleBackColor = false;
             // 
             // btn4
             // 
+            btn4.BackColor = Color.Khaki;
+            btn4.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btn4.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
             btn4.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
             btn4.Location = new Point(30, 100);
             btn4.Name = "btn4";
             btn4.Size = new Size(46, 50);
             btn4.TabIndex = 1;
             btn4.Text = "4";
-            btn4.UseVisualStyleBackColor = true;
+            btn4.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -647,7 +722,7 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(359, 46);
             panel5.Name = "panel5";
-            panel5.Size = new Size(374, 328);
+            panel5.Size = new Size(416, 328);
             panel5.TabIndex = 4;
             // 
             // flowLayoutPanel1
@@ -658,14 +733,15 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(374, 328);
+            flowLayoutPanel1.Padding = new Padding(5);
+            flowLayoutPanel1.Size = new Size(416, 328);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // frmCashier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(954, 511);
+            ClientSize = new Size(996, 511);
             Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -735,5 +811,6 @@
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiTextBox txtSubTotal;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
+        private CuoreUI.Controls.cuiLabel cuiLabel2;
     }
 }
