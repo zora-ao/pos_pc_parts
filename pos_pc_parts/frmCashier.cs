@@ -277,7 +277,7 @@ namespace pos_pc_parts
 
                 cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity + 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[0].Value.ToString());
+                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[1].Value.ToString());
                 cm.ExecuteNonQuery();
                 cn.Close();
 
@@ -290,7 +290,7 @@ namespace pos_pc_parts
                 cn.Open();
                 cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity - 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[0].Value.ToString());
+                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[1].Value.ToString());
                 cm.ExecuteNonQuery();
                 cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier AND quantity <= 0", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
@@ -350,11 +350,12 @@ namespace pos_pc_parts
         {
 
           
-
             if (decimal.TryParse(lbCutomerMoney.Text, out decimal amount))
             {
 
-                if (amount < Convert.ToDecimal(txtSubTotal.Text))
+                decimal change = amount - Convert.ToDecimal(txtSubTotal.Text);
+
+                if (amount < Convert.ToDecimal(txtSubTotal.Text) || Convert.ToDecimal(txtSubTotal.Text) <= 0)
                 {
                     MessageBox.Show("Insufficient amount!");
                     return;
@@ -362,11 +363,11 @@ namespace pos_pc_parts
 
                 if (amount == Convert.ToDecimal(txtSubTotal.Text))
                 {
-                    lbCustomerChanged.Text = "Change: ₱ 0.00";
-                    return;
+                    
+                    lbCustomerChanged.Text = change.ToString("N2");
                 }
 
-                if (comboPayment.SelectedIndex == -1)
+                if (comboPayment.SelectedIndex == -1 || comboPayment.SelectedItem == null)
                 {
                     MessageBox.Show("Please select a payment method.");
                     return;
@@ -376,7 +377,6 @@ namespace pos_pc_parts
                 lbCutomerMoney.Text = amount.ToString("N2");
                 txtAmount.Text = "";
 
-                decimal change = amount - Convert.ToDecimal(txtSubTotal.Text);
                 lbCustomerChanged.Text = change.ToString();
 
                 cn = new MySqlConnection(dbcon.GetConnection());
@@ -409,8 +409,16 @@ namespace pos_pc_parts
 
 
                 cn.Close();
+
+
                 LoadPendingItems();
-                GenerateReceipt(transactionId);
+
+                string paymentMethod = comboPayment.SelectedItem?.ToString() ?? "Unknown";
+                GenerateReceipt(transactionId, paymentMethod);
+
+                lbCutomerMoney.Text = "0.00";
+                lbCustomerChanged.Text = "0.00";
+
 
             }
             else
@@ -419,7 +427,7 @@ namespace pos_pc_parts
             }
         }
 
-        private void GenerateReceipt(int transactionId)
+        private void GenerateReceipt(int transactionId, string paymentType)
         {
             try
             {
@@ -433,7 +441,7 @@ namespace pos_pc_parts
 
                 doc.Open();
 
-                // Title
+                
                 iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph(
                     "EZPC\n",
                     new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD)
@@ -447,7 +455,7 @@ namespace pos_pc_parts
                 doc.Add(new Paragraph("Cashier ID: " + currentCashierId));
                 doc.Add(new Paragraph("--------------------------------------"));
 
-                // Open DB to read items
+                
                 cn = new MySqlConnection(dbcon.GetConnection());
                 cn.Open();
 
@@ -487,7 +495,7 @@ namespace pos_pc_parts
 
                 doc.Add(new Paragraph("--------------------------------------"));
                 doc.Add(new Paragraph($"TOTAL: ₱ {total:N2}"));
-                doc.Add(new Paragraph($"CASH: ₱ {lbCutomerMoney.Text}"));
+                doc.Add(new Paragraph($"{paymentType}: ₱ {lbCutomerMoney.Text}"));
                 doc.Add(new Paragraph($"CHANGE: ₱ {lbCustomerChanged.Text}"));
                 doc.Add(new Paragraph("======================================"));
                 doc.Add(new iTextSharp.text.Paragraph(
@@ -499,7 +507,7 @@ namespace pos_pc_parts
 
                 cn.Close();
 
-                // Show the receipt in a PDF viewer form
+         
                 using (var pdfDoc = PdfiumViewer.PdfDocument.Load(fileName))
                 {
                     Form previewForm = new Form();
@@ -512,7 +520,7 @@ namespace pos_pc_parts
                     pdfViewer.Document = pdfDoc;
 
                     previewForm.Controls.Add(pdfViewer);
-                    previewForm.ShowDialog(); // shows receipt preview on screen
+                    previewForm.ShowDialog(); 
                 }
 
             }
