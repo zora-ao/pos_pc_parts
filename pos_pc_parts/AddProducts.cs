@@ -114,7 +114,7 @@ namespace pos_pc_parts
                     imgPath = Path.Combine(Application.StartupPath, "Images", "no-image.jpg");
                 }
 
-                pictureBox1.Content = Image.FromFile(imgPath);
+                pictureBox1.Image = Image.FromFile(imgPath);
 
             }
 
@@ -132,6 +132,16 @@ namespace pos_pc_parts
 
             cn.Open();
 
+            cm = new MySqlCommand("SELECT COUNT(*) FROM products WHERE product_name = @name", cn);
+            cm.Parameters.AddWithValue("@name", txtProductName.Content);
+
+            int count = Convert.ToInt32(cm.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("Product name already exists!", "Duplicate Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
 
             string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? "no-image.jpg" : txtImagePath.Text;
             cm = new MySqlCommand("INSERT INTO products (product_name, image_path, category, price, quantity) VALUES (@name, @image_path ,@category, @price, @quantity)", cn);
@@ -197,10 +207,11 @@ namespace pos_pc_parts
             comboCategories.SelectedItem = "";
             txtPrice.Content = "";
             txtQuantity.Content = "";
-            pictureBox1.Content = null;
+            pictureBox1.Image = null;
+           
 
-            btnSave.Enabled = false;
-            btnUpdate.Enabled = true;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -221,7 +232,7 @@ namespace pos_pc_parts
                 File.Copy(ofd.FileName, dest, true);
 
 
-                pictureBox1.Content = Image.FromFile(dest);
+                pictureBox1.Image = Image.FromFile(dest);
 
                 txtImagePath.Text = Path.GetFileName(dest);
 

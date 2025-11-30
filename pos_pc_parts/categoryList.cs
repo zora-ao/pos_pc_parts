@@ -65,7 +65,7 @@ namespace pos_pc_parts
 
                 loadCategory();
                 MessageBox.Show("Category has been successfully added.");
-                txtAddCat.Clear();
+                txtAddCat.Content = "";
 
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace pos_pc_parts
 
         private void btnClearCat_Click(object sender, EventArgs e)
         {
-            txtAddCat.Clear();
+            txtAddCat.Content = "";
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             btnClearCat = new Button();
-            txtAddCat = new TextBox();
             btnUpdateCat = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -41,6 +40,7 @@
             colCategory = new DataGridViewTextBoxColumn();
             colEdit = new DataGridViewImageColumn();
             colDelete = new DataGridViewImageColumn();
+            txtAddCat = new CuoreUI.Controls.cuiTextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -49,8 +49,8 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(btnClearCat);
             panel1.Controls.Add(txtAddCat);
+            panel1.Controls.Add(btnClearCat);
             panel1.Controls.Add(btnUpdateCat);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
@@ -63,26 +63,21 @@
             // 
             // btnClearCat
             // 
-            btnClearCat.Location = new Point(495, 41);
+            btnClearCat.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnClearCat.Location = new Point(521, 33);
             btnClearCat.Name = "btnClearCat";
-            btnClearCat.Size = new Size(75, 23);
+            btnClearCat.Size = new Size(75, 38);
             btnClearCat.TabIndex = 3;
             btnClearCat.Text = "Clear";
             btnClearCat.UseVisualStyleBackColor = true;
             btnClearCat.Click += btnClearCat_Click;
             // 
-            // txtAddCat
-            // 
-            txtAddCat.Location = new Point(73, 42);
-            txtAddCat.Name = "txtAddCat";
-            txtAddCat.Size = new Size(255, 23);
-            txtAddCat.TabIndex = 2;
-            // 
             // btnUpdateCat
             // 
-            btnUpdateCat.Location = new Point(415, 41);
+            btnUpdateCat.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnUpdateCat.Location = new Point(441, 33);
             btnUpdateCat.Name = "btnUpdateCat";
-            btnUpdateCat.Size = new Size(75, 23);
+            btnUpdateCat.Size = new Size(75, 38);
             btnUpdateCat.TabIndex = 3;
             btnUpdateCat.Text = "Update";
             btnUpdateCat.UseVisualStyleBackColor = true;
@@ -91,26 +86,29 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(248, 9);
+            label1.Font = new Font("Rockwell Nova", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(80, 15);
+            label1.Size = new Size(127, 20);
             label1.TabIndex = 1;
             label1.Text = "Add Category";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 45);
+            label2.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 43);
             label2.Name = "label2";
-            label2.Size = new Size(55, 15);
+            label2.Size = new Size(64, 19);
             label2.TabIndex = 1;
             label2.Text = "Category";
             // 
             // btnSaveCat
             // 
-            btnSaveCat.Location = new Point(334, 42);
+            btnSaveCat.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnSaveCat.Location = new Point(360, 34);
             btnSaveCat.Name = "btnSaveCat";
-            btnSaveCat.Size = new Size(75, 23);
+            btnSaveCat.Size = new Size(75, 38);
             btnSaveCat.TabIndex = 3;
             btnSaveCat.Text = "Save";
             btnSaveCat.UseVisualStyleBackColor = true;
@@ -130,12 +128,14 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colCategory, colEdit, colDelete });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.Size = new Size(608, 188);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -173,6 +173,34 @@
             colDelete.ReadOnly = true;
             colDelete.Width = 46;
             // 
+            // txtAddCat
+            // 
+            txtAddCat.BackgroundColor = Color.White;
+            txtAddCat.Content = "";
+            txtAddCat.FocusBackgroundColor = Color.White;
+            txtAddCat.FocusImageTint = Color.White;
+            txtAddCat.FocusOutlineColor = Color.Silver;
+            txtAddCat.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddCat.ForeColor = Color.Black;
+            txtAddCat.Image = null;
+            txtAddCat.ImageExpand = new Point(0, 0);
+            txtAddCat.ImageOffset = new Point(0, 0);
+            txtAddCat.Location = new Point(83, 37);
+            txtAddCat.Margin = new Padding(4);
+            txtAddCat.Multiline = false;
+            txtAddCat.Name = "txtAddCat";
+            txtAddCat.NormalImageTint = Color.White;
+            txtAddCat.OutlineColor = Color.FromArgb(128, 128, 128, 128);
+            txtAddCat.Padding = new Padding(16, 9, 16, 0);
+            txtAddCat.PasswordChar = false;
+            txtAddCat.PlaceholderColor = Color.LightGray;
+            txtAddCat.PlaceholderText = "Enter here";
+            txtAddCat.Rounding = new Padding(8);
+            txtAddCat.Size = new Size(266, 35);
+            txtAddCat.TabIndex = 4;
+            txtAddCat.TextOffset = new Size(0, 0);
+            txtAddCat.UnderlinedStyle = true;
+            // 
             // categoryList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -194,7 +222,6 @@
 
         private Panel panel1;
         private Label label2;
-        private TextBox txtAddCat;
         private Button btnSaveCat;
         private Button btnUpdateCat;
         private Button btnClearCat;
@@ -205,5 +232,6 @@
         private DataGridViewTextBoxColumn colCategory;
         private DataGridViewImageColumn colEdit;
         private DataGridViewImageColumn colDelete;
+        private CuoreUI.Controls.cuiTextBox txtAddCat;
     }
 }

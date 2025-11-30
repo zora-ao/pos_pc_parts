@@ -67,5 +67,19 @@ namespace pos_pc_parts
             frmCashier frmCash = new frmCashier();
             frmCash.ShowDialog();
         }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            admin_main_panel.Controls.Clear();
+
+            frmSales sls = new frmSales();
+            sls.TopLevel = false;
+            sls.FormBorderStyle = FormBorderStyle.None;
+            sls.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(sls);
+            admin_main_panel.Tag = sls;
+            sls.BringToFront();
+            sls.Show();
+        }
     }
 }

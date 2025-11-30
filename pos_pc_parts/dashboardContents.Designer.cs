@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel3 = new Panel();
             cuiPanel4 = new CuoreUI.Controls.cuiPanel();
             cuiLabel4 = new CuoreUI.Controls.cuiLabel();
             lbOverallSales = new Label();
@@ -41,36 +40,28 @@
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
             cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             lbTotalItems = new Label();
-            panel3.SuspendLayout();
+            cuiPanel5 = new CuoreUI.Controls.cuiPanel();
+            cuiLabel5 = new CuoreUI.Controls.cuiLabel();
+            lbLowStocks = new Label();
+            cuiLabel6 = new CuoreUI.Controls.cuiLabel();
             cuiPanel4.SuspendLayout();
             cuiPanel3.SuspendLayout();
             cuiPanel2.SuspendLayout();
             cuiPanel1.SuspendLayout();
+            cuiPanel5.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(cuiPanel4);
-            panel3.Controls.Add(cuiPanel3);
-            panel3.Controls.Add(cuiPanel2);
-            panel3.Controls.Add(cuiPanel1);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(700, 154);
-            panel3.TabIndex = 3;
             // 
             // cuiPanel4
             // 
             cuiPanel4.Controls.Add(cuiLabel4);
             cuiPanel4.Controls.Add(lbOverallSales);
-            cuiPanel4.Location = new Point(522, 23);
+            cuiPanel4.Location = new Point(345, 186);
             cuiPanel4.Name = "cuiPanel4";
             cuiPanel4.OutlineThickness = 1F;
             cuiPanel4.PanelColor = Color.FromArgb(27, 60, 83);
             cuiPanel4.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
             cuiPanel4.Rounding = new Padding(8);
-            cuiPanel4.Size = new Size(129, 107);
+            cuiPanel4.Size = new Size(259, 107);
             cuiPanel4.TabIndex = 4;
             // 
             // cuiLabel4
@@ -104,13 +95,13 @@
             // 
             cuiPanel3.Controls.Add(cuiLabel3);
             cuiPanel3.Controls.Add(lbSalesToday);
-            cuiPanel3.Location = new Point(361, 23);
+            cuiPanel3.Location = new Point(345, 57);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 1F;
             cuiPanel3.PanelColor = Color.FromArgb(27, 60, 83);
             cuiPanel3.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
             cuiPanel3.Rounding = new Padding(8);
-            cuiPanel3.Size = new Size(129, 107);
+            cuiPanel3.Size = new Size(259, 107);
             cuiPanel3.TabIndex = 4;
             // 
             // cuiLabel3
@@ -144,13 +135,13 @@
             // 
             cuiPanel2.Controls.Add(cuiLabel2);
             cuiPanel2.Controls.Add(lbTotalStock);
-            cuiPanel2.Location = new Point(192, 23);
+            cuiPanel2.Location = new Point(25, 186);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 1F;
             cuiPanel2.PanelColor = Color.FromArgb(27, 60, 83);
             cuiPanel2.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
             cuiPanel2.Rounding = new Padding(8);
-            cuiPanel2.Size = new Size(129, 107);
+            cuiPanel2.Size = new Size(259, 107);
             cuiPanel2.TabIndex = 4;
             // 
             // cuiLabel2
@@ -184,13 +175,13 @@
             // 
             cuiPanel1.Controls.Add(cuiLabel1);
             cuiPanel1.Controls.Add(lbTotalItems);
-            cuiPanel1.Location = new Point(32, 23);
+            cuiPanel1.Location = new Point(25, 57);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.FromArgb(27, 60, 83);
             cuiPanel1.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(129, 107);
+            cuiPanel1.Size = new Size(259, 107);
             cuiPanel1.TabIndex = 2;
             // 
             // cuiLabel1
@@ -220,18 +211,74 @@
             lbTotalItems.TabIndex = 0;
             lbTotalItems.Text = "25";
             // 
+            // cuiPanel5
+            // 
+            cuiPanel5.Controls.Add(cuiLabel5);
+            cuiPanel5.Controls.Add(lbLowStocks);
+            cuiPanel5.Location = new Point(170, 331);
+            cuiPanel5.Name = "cuiPanel5";
+            cuiPanel5.OutlineThickness = 1F;
+            cuiPanel5.PanelColor = Color.FromArgb(27, 60, 83);
+            cuiPanel5.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            cuiPanel5.Rounding = new Padding(8);
+            cuiPanel5.Size = new Size(259, 107);
+            cuiPanel5.TabIndex = 5;
+            // 
+            // cuiLabel5
+            // 
+            cuiLabel5.BackColor = Color.Transparent;
+            cuiLabel5.Content = "Low\\ Stocks\\ Products:";
+            cuiLabel5.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiLabel5.ForeColor = Color.White;
+            cuiLabel5.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel5.Location = new Point(6, 20);
+            cuiLabel5.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel5.Name = "cuiLabel5";
+            cuiLabel5.Size = new Size(154, 20);
+            cuiLabel5.TabIndex = 3;
+            cuiLabel5.VerticalAlignment = StringAlignment.Near;
+            // 
+            // lbLowStocks
+            // 
+            lbLowStocks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbLowStocks.AutoSize = true;
+            lbLowStocks.BackColor = Color.Transparent;
+            lbLowStocks.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            lbLowStocks.ForeColor = Color.White;
+            lbLowStocks.Location = new Point(6, 56);
+            lbLowStocks.Name = "lbLowStocks";
+            lbLowStocks.Size = new Size(25, 19);
+            lbLowStocks.TabIndex = 0;
+            lbLowStocks.Text = "25";
+            // 
+            // cuiLabel6
+            // 
+            cuiLabel6.Content = "DASHBOARD";
+            cuiLabel6.Font = new Font("Rockwell Nova Cond", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiLabel6.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel6.Location = new Point(25, 12);
+            cuiLabel6.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel6.Name = "cuiLabel6";
+            cuiLabel6.Size = new Size(119, 24);
+            cuiLabel6.TabIndex = 6;
+            cuiLabel6.VerticalAlignment = StringAlignment.Near;
+            // 
             // dashboardContents
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(700, 450);
-            Controls.Add(panel3);
+            Controls.Add(cuiLabel6);
+            Controls.Add(cuiPanel5);
+            Controls.Add(cuiPanel1);
+            Controls.Add(cuiPanel2);
+            Controls.Add(cuiPanel3);
+            Controls.Add(cuiPanel4);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "dashboardContents";
             Text = "dashboardContents";
-            panel3.ResumeLayout(false);
             cuiPanel4.ResumeLayout(false);
             cuiPanel4.PerformLayout();
             cuiPanel3.ResumeLayout(false);
@@ -240,12 +287,12 @@
             cuiPanel2.PerformLayout();
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
+            cuiPanel5.ResumeLayout(false);
+            cuiPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel3;
         private Label lbTotalItems;
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private CuoreUI.Controls.cuiPanel cuiPanel4;
@@ -258,5 +305,9 @@
         private CuoreUI.Controls.cuiLabel cuiLabel2;
         private Label lbTotalStock;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
+        private CuoreUI.Controls.cuiPanel cuiPanel5;
+        private CuoreUI.Controls.cuiLabel cuiLabel5;
+        private Label lbLowStocks;
+        private CuoreUI.Controls.cuiLabel cuiLabel6;
     }
 }

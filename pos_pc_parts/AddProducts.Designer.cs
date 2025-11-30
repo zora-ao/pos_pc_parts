@@ -40,7 +40,7 @@
             colEdit = new DataGridViewImageColumn();
             colDelete = new DataGridViewImageColumn();
             panel2 = new Panel();
-            pictureBox1 = new CuoreUI.Controls.cuiPictureBox();
+            pictureBox1 = new PictureBox();
             comboCategories = new CuoreUI.Controls.cuiComboBox();
             txtQuantity = new CuoreUI.Controls.cuiTextBox();
             txtPrice = new CuoreUI.Controls.cuiTextBox();
@@ -58,6 +58,7 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -93,7 +94,7 @@
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.Size = new Size(684, 223);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -182,17 +183,12 @@
             // pictureBox1
             // 
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Content = null;
-            pictureBox1.ImageTint = Color.White;
-            pictureBox1.Location = new Point(436, 16);
-            pictureBox1.Margin = new Padding(4, 3, 4, 3);
+            pictureBox1.Location = new Point(468, 45);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.OutlineThickness = 1F;
-            pictureBox1.PanelOutlineColor = Color.Empty;
-            pictureBox1.Rotation = 0;
-            pictureBox1.Rounding = new Padding(8);
-            pictureBox1.Size = new Size(214, 145);
+            pictureBox1.Size = new Size(187, 138);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
             // 
             // comboCategories
             // 
@@ -366,7 +362,7 @@
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new Point(130, 179);
+            btnBrowse.Location = new Point(130, 189);
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Size(99, 26);
             btnBrowse.TabIndex = 4;
@@ -408,6 +404,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -438,6 +435,6 @@
         private CuoreUI.Controls.cuiComboBox comboCategories;
         private CuoreUI.Controls.cuiTextBox txtPrice;
         private CuoreUI.Controls.cuiTextBox txtQuantity;
-        private CuoreUI.Controls.cuiPictureBox pictureBox1;
+        private PictureBox pictureBox1;
     }
 }

@@ -15,6 +15,7 @@ namespace pos_pc_parts
             countStocks();
             todaySales();
             overAllSales();
+            lowStockProducts();
         }
 
 
@@ -69,6 +70,23 @@ namespace pos_pc_parts
             decimal totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
             lbOverallSales.Text = totalSales.ToString("C2");
             cn.Close();
+        }
+
+        public void lowStockProducts() {             
+            int count = 0;
+
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+            cm = new MySqlCommand("SELECT product_name, quantity FROM products WHERE quantity <= 5", cn);
+            MySqlDataReader dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                count++;
+            }
+            dr.Close();
+            cn.Close();
+
+            lbLowStocks.Text = count.ToString();
         }
 
 
