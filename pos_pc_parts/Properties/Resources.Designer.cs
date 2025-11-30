@@ -193,6 +193,16 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap si_user_fill {
+            get {
+                object obj = ResourceManager.GetObject("si_user-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tdesign_clear {
             get {
                 object obj = ResourceManager.GetObject("tdesign_clear", resourceCulture);

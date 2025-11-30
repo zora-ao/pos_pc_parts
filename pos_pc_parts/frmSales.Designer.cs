@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             transId = new DataGridViewTextBoxColumn();
             colTotal = new DataGridViewTextBoxColumn();
             colPayment = new DataGridViewTextBoxColumn();
             colCashier = new DataGridViewTextBoxColumn();
             colDate = new DataGridViewTextBoxColumn();
+            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -42,26 +42,15 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { transId, colTotal, colPayment, colCashier, colDate });
             dataGridView1.Location = new Point(12, 113);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(776, 325);
+            dataGridView1.Size = new Size(780, 325);
             dataGridView1.TabIndex = 0;
-            // 
-            // cuiLabel1
-            // 
-            cuiLabel1.Content = "Sales";
-            cuiLabel1.Font = new Font("Rockwell Nova", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(13, 12);
-            cuiLabel1.Margin = new Padding(4, 3, 4, 3);
-            cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(87, 20);
-            cuiLabel1.TabIndex = 1;
-            cuiLabel1.VerticalAlignment = StringAlignment.Near;
             // 
             // transId
             // 
@@ -93,11 +82,23 @@
             colDate.Name = "colDate";
             colDate.ReadOnly = true;
             // 
+            // cuiLabel1
+            // 
+            cuiLabel1.Content = "Sales";
+            cuiLabel1.Font = new Font("Rockwell Nova", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel1.Location = new Point(13, 12);
+            cuiLabel1.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel1.Name = "cuiLabel1";
+            cuiLabel1.Size = new Size(87, 20);
+            cuiLabel1.TabIndex = 1;
+            cuiLabel1.VerticalAlignment = StringAlignment.Near;
+            // 
             // frmSales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(801, 450);
             Controls.Add(cuiLabel1);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;

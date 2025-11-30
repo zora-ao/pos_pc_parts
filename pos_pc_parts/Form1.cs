@@ -81,5 +81,18 @@ namespace pos_pc_parts
             sls.BringToFront();
             sls.Show();
         }
+
+        private void btnAddUsers_Click(object sender, EventArgs e)
+        {
+            frmAddUsers addUser = new frmAddUsers();
+            addUser.TopLevel = false;
+            addUser.FormBorderStyle = FormBorderStyle.None;
+            addUser.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(addUser);
+            admin_main_panel.Tag = addUser;
+            addUser.BringToFront();
+            addUser.Show();
+
+        }
     }
 }

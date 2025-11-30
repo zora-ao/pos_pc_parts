@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             panel2 = new Panel();
+            btnAddUsers = new Button();
+            btnSales = new Button();
             button2 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -39,7 +41,6 @@
             btnCategory = new Button();
             button1 = new Button();
             admin_main_panel = new Panel();
-            btnSales = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             panel2.BackColor = Color.FromArgb(69, 104, 130);
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(btnAddUsers);
             panel2.Controls.Add(btnSales);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(label1);
@@ -71,6 +73,32 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(185, 537);
             panel2.TabIndex = 1;
+            // 
+            // btnAddUsers
+            // 
+            btnAddUsers.Image = Properties.Resources.si_user_fill;
+            btnAddUsers.Location = new Point(26, 377);
+            btnAddUsers.Name = "btnAddUsers";
+            btnAddUsers.Size = new Size(135, 59);
+            btnAddUsers.TabIndex = 0;
+            btnAddUsers.Text = "add users";
+            btnAddUsers.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAddUsers.UseVisualStyleBackColor = true;
+            btnAddUsers.Click += btnAddUsers_Click;
+            // 
+            // btnSales
+            // 
+            btnSales.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSales.Image = (Image)resources.GetObject("btnSales.Image");
+            btnSales.ImageAlign = ContentAlignment.MiddleRight;
+            btnSales.Location = new Point(26, 314);
+            btnSales.Name = "btnSales";
+            btnSales.Size = new Size(135, 59);
+            btnSales.TabIndex = 0;
+            btnSales.Text = "Sales";
+            btnSales.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSales.UseVisualStyleBackColor = true;
+            btnSales.Click += btnSales_Click;
             // 
             // button2
             // 
@@ -88,7 +116,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Rockwell Nova", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 102);
+            label1.Location = new Point(12, 81);
             label1.Name = "label1";
             label1.Size = new Size(153, 20);
             label1.TabIndex = 2;
@@ -99,7 +127,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 27);
+            pictureBox1.Location = new Point(26, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(125, 72);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -109,7 +137,7 @@
             // button3
             // 
             button3.Image = Properties.Resources.package;
-            button3.Location = new Point(26, 208);
+            button3.Location = new Point(26, 180);
             button3.Name = "button3";
             button3.Size = new Size(135, 59);
             button3.TabIndex = 0;
@@ -132,7 +160,7 @@
             // btnCategory
             // 
             btnCategory.Image = Properties.Resources.list;
-            btnCategory.Location = new Point(26, 277);
+            btnCategory.Location = new Point(26, 249);
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(135, 59);
             btnCategory.TabIndex = 0;
@@ -144,7 +172,7 @@
             // button1
             // 
             button1.Image = Properties.Resources.clipboard;
-            button1.Location = new Point(26, 139);
+            button1.Location = new Point(26, 111);
             button1.Name = "button1";
             button1.Size = new Size(135, 59);
             button1.TabIndex = 0;
@@ -160,16 +188,6 @@
             admin_main_panel.Name = "admin_main_panel";
             admin_main_panel.Size = new Size(752, 537);
             admin_main_panel.TabIndex = 2;
-            // 
-            // btnSales
-            // 
-            btnSales.Location = new Point(26, 352);
-            btnSales.Name = "btnSales";
-            btnSales.Size = new Size(117, 58);
-            btnSales.TabIndex = 0;
-            btnSales.Text = "button5";
-            btnSales.UseVisualStyleBackColor = true;
-            btnSales.Click += btnSales_Click;
             // 
             // Form1
             // 
@@ -200,5 +218,6 @@
         private Panel admin_main_panel;
         private Button button2;
         private Button btnSales;
+        private Button btnAddUsers;
     }
 }

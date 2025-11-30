@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Session;
 using MySqlX.XDevAPI.Common;
 
 namespace pos_pc_parts
@@ -42,8 +43,17 @@ namespace pos_pc_parts
             cn.Open();
 
             cm = new MySqlCommand("SELECT SUM(quantity) FROM products", cn);
-            int totalStocks = Convert.ToInt32(cm.ExecuteScalar());
+            object result = cm.ExecuteScalar();
+            int totalStocks = 0;
+
+            if (result != null && result != DBNull.Value)
+            {
+                totalStocks = Convert.ToInt32(result);
+            }
+
             lbTotalStock.Text = totalStocks.ToString();
+
+
 
 
             cn.Close();
