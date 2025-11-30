@@ -2,13 +2,13 @@ using MySql.Data.MySqlClient;
 
 namespace pos_pc_parts
 {
-    public partial class Form1 : Form
+    public partial class frmAdmin : Form
     {
 
 
-        public Form1()
+        public frmAdmin()
         {
-            InitializeComponent();
+          
             defaultLoad();
 
 

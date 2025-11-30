@@ -1,6 +1,6 @@
 ﻿namespace pos_pc_parts
 {
-    partial class Form1
+    partial class frmAdmin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             panel1 = new Panel();
             panel2 = new Panel();
             btnAddUsers = new Button();
