@@ -13,7 +13,6 @@ using iTextFont = iTextSharp.text.Font;
 using iTextSharp.text.pdf.draw;
 using PdfiumViewer;
 using System.IO;
-using MySql.Data.MySqlClient;
 
 namespace pos_pc_parts
 {
@@ -45,7 +44,7 @@ namespace pos_pc_parts
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
-            string query = "SELECT product_id, product_name, image_path, price FROM products";
+            string query = "SELECT product_id, product_name, image_path, price, quantity FROM products";
 
             cm = new MySqlCommand(query, cn);
             MySqlDataReader dr = cm.ExecuteReader();
@@ -94,14 +93,16 @@ namespace pos_pc_parts
 
 
                 Label lblPrice = new Label();
-                lblPrice.Text = "₱ " + Convert.ToDecimal(dr["price"]).ToString("N2");
+                decimal price = Convert.ToDecimal(dr["price"]);
+                int quantity = Convert.ToInt32(dr["quantity"]);
+
+                lblPrice.Text = $"₱ {price:N2} | Qty: {quantity}";
                 lblPrice.ForeColor = Color.White;
                 lblPrice.Dock = DockStyle.Fill;
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
                 lblPrice.Font = new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
-
-
                 overlay.Controls.Add(lblPrice);
+
 
                 card.Controls.Add(overlay);
 
@@ -130,18 +131,29 @@ namespace pos_pc_parts
         public void Card_Click(object sender, EventArgs e)
         {
             Panel card = (Panel)sender;
-
             string id = card.Tag.ToString();
 
+            
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
+
+            cm = new MySqlCommand("SELECT quantity FROM products WHERE product_id = @id", cn);
+            cm.Parameters.AddWithValue("@id", id);
+            int stock = Convert.ToInt32(cm.ExecuteScalar());
+
+            if (stock <= 0)
+            {
+                cn.Close();
+                MessageBox.Show("This item is out of stock!", "Stock Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
             if (MessageBox.Show("Do you want to add this?", "Add Product",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                cn = new MySqlConnection(dbcon.GetConnection());
-                cn.Open();
-
-
-                string checkQuery = "SELECT COUNT(*) FROM pending_items WHERE cashier_id = @cashier AND product_id = @product_id";
-                cm = new MySqlCommand(checkQuery, cn);
+                
+                cm = new MySqlCommand("SELECT COUNT(*) FROM pending_items WHERE cashier_id = @cashier AND product_id = @product_id", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
                 cm.Parameters.AddWithValue("@product_id", id);
 
@@ -149,7 +161,6 @@ namespace pos_pc_parts
 
                 if (count > 0)
                 {
-
                     cm = new MySqlCommand(
                         "UPDATE pending_items SET quantity = quantity + 1 WHERE cashier_id = @cashier AND product_id = @product_id;", cn);
 
@@ -159,25 +170,28 @@ namespace pos_pc_parts
                 }
                 else
                 {
-
                     cm = new MySqlCommand(
                         "INSERT INTO pending_items (cashier_id, product_id, quantity, price) " +
                         "VALUES (@cashier, @product_id, 1, (SELECT price FROM products WHERE product_id = @product_id))",
-                        cn
-                    );
-
+                        cn);
 
                     cm.Parameters.AddWithValue("@cashier", currentCashierId);
                     cm.Parameters.AddWithValue("@product_id", id);
                     cm.ExecuteNonQuery();
                 }
 
+                
+                cm = new MySqlCommand("UPDATE products SET quantity = quantity - 1 WHERE product_id = @id", cn);
+                cm.Parameters.AddWithValue("@id", id);
+                cm.ExecuteNonQuery();
+
                 cn.Close();
 
                 LoadPendingItems();
+                loadProducts(); 
             }
-
         }
+
         public void LoadPendingItems()
         {
             try
@@ -269,38 +283,59 @@ namespace pos_pc_parts
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;
+            string productName = dataGridViewCart.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            cn = new MySqlConnection(dbcon.GetConnection());
+            cn.Open();
 
             if (colName == "colIncrease")
             {
-                cn = new MySqlConnection(dbcon.GetConnection());
-                cn.Open();
+                
+                cm = new MySqlCommand("SELECT quantity FROM products WHERE product_name = @product_name", cn);
+                cm.Parameters.AddWithValue("@product_name", productName);
+                int stock = Convert.ToInt32(cm.ExecuteScalar());
 
-                cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity + 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
-                cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[1].Value.ToString());
-                cm.ExecuteNonQuery();
-                cn.Close();
+                if (stock <= 0)
+                {
+                    MessageBox.Show("Cannot add more. Item is out of stock!", "Stock Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    
+                    cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity + 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
+                    cm.Parameters.AddWithValue("@cashier", currentCashierId);
+                    cm.Parameters.AddWithValue("@product_name", productName);
+                    cm.ExecuteNonQuery();
 
-                LoadPendingItems();
-
+                    
+                    cm = new MySqlCommand("UPDATE products SET quantity = quantity - 1 WHERE product_name = @product_name", cn);
+                    cm.Parameters.AddWithValue("@product_name", productName);
+                    cm.ExecuteNonQuery();
+                }
             }
             else if (colName == "colDecrease")
             {
-                cn = new MySqlConnection(dbcon.GetConnection());
-                cn.Open();
                 cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity - 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@product_name", dataGridViewCart.Rows[e.RowIndex].Cells[1].Value.ToString());
+                cm.Parameters.AddWithValue("@product_name", productName);
                 cm.ExecuteNonQuery();
+
+                
                 cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier AND quantity <= 0", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
                 cm.ExecuteNonQuery();
-                cn.Close();
 
-                LoadPendingItems();
-
+               
+                cm = new MySqlCommand("UPDATE products SET quantity = quantity + 1 WHERE product_name = @product_name", cn);
+                cm.Parameters.AddWithValue("@product_name", productName);
+                cm.ExecuteNonQuery();
             }
+
+            cn.Close();
+            LoadPendingItems();
+            loadProducts(); 
         }
+
 
         private void button17_Click(object sender, EventArgs e) // this is the delete nalimutan ko e rename
         {
@@ -310,8 +345,9 @@ namespace pos_pc_parts
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string pendingId = dataGridViewCart.CurrentRow.Cells["colId"].Value.ToString();
+            string pendingId = dataGridViewCart.CurrentRow.Cells["colId"].Value.ToString() ?? "";
+            string productName = dataGridViewCart.CurrentRow.Cells["colName"].Value.ToString();
+            int quantityToReturn = Convert.ToInt32(dataGridViewCart.CurrentRow.Cells["colQuantity"].Value);
 
             if (MessageBox.Show("Are you sure you want to delete this item?",
                 "Delete Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -319,14 +355,21 @@ namespace pos_pc_parts
                 cn = new MySqlConnection(dbcon.GetConnection());
                 cn.Open();
 
-                string query = "DELETE FROM pending_items WHERE id = @id";
-                MySqlCommand cm = new MySqlCommand(query, cn);
+                cm = new MySqlCommand("UPDATE products SET quantity = quantity + @qty WHERE product_name = @product_name", cn);
+                cm.Parameters.AddWithValue("@qty", quantityToReturn);
+                cm.Parameters.AddWithValue("@product_name", productName);
+                cm.ExecuteNonQuery();
+
+                
+                cm = new MySqlCommand("DELETE FROM pending_items WHERE id = @id", cn);
                 cm.Parameters.AddWithValue("@id", pendingId);
                 cm.ExecuteNonQuery();
 
                 cn.Close();
 
+                
                 LoadPendingItems();
+                loadProducts(); 
             }
         }
 
@@ -449,12 +492,13 @@ namespace pos_pc_parts
                 title.Alignment = Element.ALIGN_CENTER;
                 doc.Add(title);
 
-                doc.Add(new Paragraph("======================================"));
-                doc.Add(new Paragraph("Transaction ID: " + transactionId));
-                doc.Add(new Paragraph("Date: " + DateTime.Now));
-                doc.Add(new Paragraph("Cashier ID: " + currentCashierId));
-                doc.Add(new Paragraph("--------------------------------------"));
-
+                doc.Add(Centered("======================================"));
+                doc.Add(Centered("Transaction ID: " + transactionId));
+                doc.Add(Centered("Date: " + DateTime.Now));
+                doc.Add(Centered("Cashier ID: " + currentCashierId));
+                doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
+                doc.Add(Centered(" "));
+                doc.Add(Centered(" "));
 
                 cn = new MySqlConnection(dbcon.GetConnection());
                 cn.Open();
@@ -468,8 +512,9 @@ namespace pos_pc_parts
                 MySqlDataReader dr = cm2.ExecuteReader();
 
                 PdfPTable table = new PdfPTable(4);
+                table.DefaultCell.Border = PdfPCell.NO_BORDER;
                 table.WidthPercentage = 100;
-                table.SetWidths(new float[] { 3, 1, 1, 1 });
+                table.SetWidths(new float[] { 2, 1, 1, 1 });
 
                 table.AddCell("Product");
                 table.AddCell("Qty");
@@ -493,15 +538,49 @@ namespace pos_pc_parts
                 dr.Close();
                 cn.Close();
 
-                doc.Add(new Paragraph("--------------------------------------"));
-                doc.Add(new Paragraph($"TOTAL: ₱ {total:N2}"));
-                doc.Add(new Paragraph($"{paymentType}: ₱ {lbCutomerMoney.Text}"));
-                doc.Add(new Paragraph($"CHANGE: ₱ {lbCustomerChanged.Text}"));
-                doc.Add(new Paragraph("======================================"));
-                doc.Add(new iTextSharp.text.Paragraph(
+                doc.Add(Centered(" "));
+                doc.Add(Centered(" "));
+                doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
+                string line1 = string.Format(
+                    "{0,-50} {1,50}",
+                    $"TOTAL: ",
+                    $"Php {total:N2}"
+                );
+
+                Paragraph p1 = new Paragraph(line1);
+                p1.Alignment = Element.ALIGN_CENTER;
+                doc.Add(p1);
+
+
+                doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
+                string line2 = string.Format(
+                    "{0,-50} {1,50}", 
+                    $"{paymentType}: ",
+                    $"Php {lbCutomerMoney.Text}"
+                );
+
+                Paragraph p2 = new Paragraph(line2);
+                p2.Alignment = Element.ALIGN_CENTER;
+                doc.Add(p2);
+
+                string line3 = string.Format(
+                    "{0,-50} {1,50}",
+                    $"Change: ",
+                    $"Php {lbCustomerChanged.Text}"
+                );
+
+                Paragraph p3 = new Paragraph(line3);
+                p3.Alignment = Element.ALIGN_CENTER;
+                doc.Add(p3);
+
+                doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
+
+                Paragraph thankYou = new Paragraph(
                     "THANK YOU FOR YOUR PURCHASE!",
                     new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD)
-                ));
+                );
+                thankYou.Alignment = Element.ALIGN_CENTER;
+                doc.Add(thankYou);
 
                 doc.Close();
 
@@ -530,6 +609,14 @@ namespace pos_pc_parts
             }
 
         }
+
+        private Paragraph Centered(string text)
+        {
+            Paragraph p = new Paragraph(text);
+            p.Alignment = Element.ALIGN_CENTER;
+            return p;
+        }
+
 
         private void button19_Click(object sender, EventArgs e)
         {

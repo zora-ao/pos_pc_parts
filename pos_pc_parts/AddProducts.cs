@@ -36,7 +36,7 @@ namespace pos_pc_parts
 
             while (dr.Read())
             {
-                dataGridView1.Rows.Add(
+                int rowIndex = dataGridView1.Rows.Add(
                     dr["product_id"].ToString(),
                     dr["image_path"].ToString(),
                     dr["product_name"].ToString(),
@@ -44,6 +44,11 @@ namespace pos_pc_parts
                     dr["price"].ToString(),
                     dr["quantity"].ToString()
                     );
+                int quantity = Convert.ToInt32(dr["quantity"]);
+                if (quantity <= 5) 
+                {
+                    dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 200, 200); 
+                }
             }
 
             dr.Close();
@@ -176,13 +181,18 @@ namespace pos_pc_parts
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
-            string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? "no-image.jpg" : txtImagePath.Text;
+            
 
             if (txtProductName.Content == "" || txtPrice.Content == "" || txtQuantity.Content == "" || comboCategories.SelectedItem == "")
             {
                 MessageBox.Show("Please complete the input needed!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            
+            string currentImage = dataGridView1.CurrentRow.Cells[1].Value?.ToString() ?? "no-image.jpg";
+            
+            string imagePath = string.IsNullOrEmpty(txtImagePath.Text) ? currentImage : txtImagePath.Text;
 
             cm = new MySqlCommand("UPDATE products SET product_name = @name, image_path = @img, category = @category, price = @price, quantity = @quantity WHERE product_id = @product_id", cn);
             cm.Parameters.AddWithValue("@name", txtProductName.Content);
@@ -192,6 +202,7 @@ namespace pos_pc_parts
             cm.Parameters.AddWithValue("@quantity", txtQuantity.Content);
             cm.Parameters.AddWithValue("@product_id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
             cm.ExecuteNonQuery();
+
 
             loadProducts();
             btnClear.PerformClick();

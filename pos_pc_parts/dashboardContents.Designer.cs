@@ -53,7 +53,7 @@
             // 
             // cuiPanel4
             // 
-            cuiPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cuiPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cuiPanel4.Controls.Add(cuiLabel4);
             cuiPanel4.Controls.Add(lbOverallSales);
             cuiPanel4.Location = new Point(345, 186);
@@ -94,7 +94,7 @@
             // 
             // cuiPanel3
             // 
-            cuiPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cuiPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cuiPanel3.Controls.Add(cuiLabel3);
             cuiPanel3.Controls.Add(lbSalesToday);
             cuiPanel3.Location = new Point(345, 57);
@@ -135,6 +135,7 @@
             // 
             // cuiPanel2
             // 
+            cuiPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cuiPanel2.Controls.Add(cuiLabel2);
             cuiPanel2.Controls.Add(lbTotalStock);
             cuiPanel2.Location = new Point(25, 186);
@@ -175,6 +176,7 @@
             // 
             // cuiPanel1
             // 
+            cuiPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cuiPanel1.Controls.Add(cuiLabel1);
             cuiPanel1.Controls.Add(lbTotalItems);
             cuiPanel1.Location = new Point(25, 57);
