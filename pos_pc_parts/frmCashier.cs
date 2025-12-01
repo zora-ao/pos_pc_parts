@@ -13,7 +13,6 @@ using iTextFont = iTextSharp.text.Font;
 using iTextSharp.text.pdf.draw;
 using PdfiumViewer;
 using System.IO;
-using Inventoryhehe;
 
 namespace pos_pc_parts
 {
@@ -25,6 +24,7 @@ namespace pos_pc_parts
         public frmCashier()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             Button[] numberButtons = { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
@@ -52,70 +52,19 @@ namespace pos_pc_parts
 
             while (dr.Read())
             {
-                int cardSize = 120;
+                ProductCard card = new ProductCard();
 
-
-                Panel card = new Panel();
-                card.Width = cardSize;
-                card.Height = cardSize;
-                card.BorderStyle = BorderStyle.FixedSingle;
-                card.Cursor = Cursors.Hand;
-                card.Tag = dr["product_id"].ToString();
-
-
-                PictureBox pic = new PictureBox();
-                pic.Dock = DockStyle.Fill;
-                pic.SizeMode = PictureBoxSizeMode.Zoom;
+                card.ProductID = dr["product_id"].ToString();
+                card.ProductName = dr["product_name"].ToString();
+                card.Price = Convert.ToDecimal(dr["price"]);
+                card.Quantity = Convert.ToInt32(dr["quantity"]);
 
                 string imgPath = Path.Combine(Application.StartupPath, "Images", dr["image_path"].ToString());
                 if (File.Exists(imgPath))
-                {
-                    pic.Image = System.Drawing.Image.FromFile(imgPath);
-                }
-
-                card.Controls.Add(pic);
-
-                Label lblName = new Label();
-                lblName.Text = dr["product_name"].ToString();
-                lblName.ForeColor = Color.White;
-                lblName.BackColor = Color.FromArgb(180, 0, 0, 0);
-                lblName.Dock = DockStyle.Top;
-                lblName.TextAlign = ContentAlignment.MiddleCenter;
-                lblName.Font = new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
-                lblName.Height = 20;
-
-                card.Controls.Add(lblName);
-
-
-                Panel overlay = new Panel();
-                overlay.Height = 20;
-                overlay.Dock = DockStyle.Bottom;
-                overlay.BackColor = Color.FromArgb(180, 0, 0, 0);
-
-
-                Label lblPrice = new Label();
-                decimal price = Convert.ToDecimal(dr["price"]);
-                int quantity = Convert.ToInt32(dr["quantity"]);
-
-                lblPrice.Text = $"₱ {price:N2} | Qty: {quantity}";
-                lblPrice.ForeColor = Color.White;
-                lblPrice.Dock = DockStyle.Fill;
-                lblPrice.TextAlign = ContentAlignment.MiddleCenter;
-                lblPrice.Font = new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
-                overlay.Controls.Add(lblPrice);
-
-
-                card.Controls.Add(overlay);
-
+                    card.ProductImage = System.Drawing.Image.FromFile(imgPath);
 
 
                 card.Click += Card_Click;
-                foreach (Control ctrl in card.Controls)
-                {
-                    ctrl.Click += (s, e) => Card_Click(card, e);
-
-                }
-
 
                 flowLayoutPanel1.Controls.Add(card);
             }
@@ -134,7 +83,7 @@ namespace pos_pc_parts
             Panel card = (Panel)sender;
             string id = card.Tag.ToString();
 
-            
+
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
@@ -149,11 +98,11 @@ namespace pos_pc_parts
                 return;
             }
 
-            
+
             if (MessageBox.Show("Do you want to add this?", "Add Product",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                
+
                 cm = new MySqlCommand("SELECT COUNT(*) FROM pending_items WHERE cashier_id = @cashier AND product_id = @product_id", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
                 cm.Parameters.AddWithValue("@product_id", id);
@@ -181,7 +130,7 @@ namespace pos_pc_parts
                     cm.ExecuteNonQuery();
                 }
 
-                
+
                 cm = new MySqlCommand("UPDATE products SET quantity = quantity - 1 WHERE product_id = @id", cn);
                 cm.Parameters.AddWithValue("@id", id);
                 cm.ExecuteNonQuery();
@@ -189,7 +138,7 @@ namespace pos_pc_parts
                 cn.Close();
 
                 LoadPendingItems();
-                loadProducts(); 
+                loadProducts();
             }
         }
 
@@ -291,7 +240,7 @@ namespace pos_pc_parts
 
             if (colName == "colIncrease")
             {
-                
+
                 cm = new MySqlCommand("SELECT quantity FROM products WHERE product_name = @product_name", cn);
                 cm.Parameters.AddWithValue("@product_name", productName);
                 int stock = Convert.ToInt32(cm.ExecuteScalar());
@@ -302,13 +251,13 @@ namespace pos_pc_parts
                 }
                 else
                 {
-                    
+
                     cm = new MySqlCommand("UPDATE pending_items SET quantity = quantity + 1 WHERE cashier_id = @cashier AND product_id = (SELECT product_id FROM products WHERE product_name = @product_name)", cn);
                     cm.Parameters.AddWithValue("@cashier", currentCashierId);
                     cm.Parameters.AddWithValue("@product_name", productName);
                     cm.ExecuteNonQuery();
 
-                    
+
                     cm = new MySqlCommand("UPDATE products SET quantity = quantity - 1 WHERE product_name = @product_name", cn);
                     cm.Parameters.AddWithValue("@product_name", productName);
                     cm.ExecuteNonQuery();
@@ -321,12 +270,12 @@ namespace pos_pc_parts
                 cm.Parameters.AddWithValue("@product_name", productName);
                 cm.ExecuteNonQuery();
 
-                
+
                 cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier AND quantity <= 0", cn);
                 cm.Parameters.AddWithValue("@cashier", currentCashierId);
                 cm.ExecuteNonQuery();
 
-               
+
                 cm = new MySqlCommand("UPDATE products SET quantity = quantity + 1 WHERE product_name = @product_name", cn);
                 cm.Parameters.AddWithValue("@product_name", productName);
                 cm.ExecuteNonQuery();
@@ -334,7 +283,7 @@ namespace pos_pc_parts
 
             cn.Close();
             LoadPendingItems();
-            loadProducts(); 
+            loadProducts();
         }
 
 
@@ -361,16 +310,16 @@ namespace pos_pc_parts
                 cm.Parameters.AddWithValue("@product_name", productName);
                 cm.ExecuteNonQuery();
 
-                
+
                 cm = new MySqlCommand("DELETE FROM pending_items WHERE id = @id", cn);
                 cm.Parameters.AddWithValue("@id", pendingId);
                 cm.ExecuteNonQuery();
 
                 cn.Close();
 
-                
+
                 LoadPendingItems();
-                loadProducts(); 
+                loadProducts();
             }
         }
 
@@ -555,7 +504,7 @@ namespace pos_pc_parts
 
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
                 string line2 = string.Format(
-                    "{0,-50} {1,50}", 
+                    "{0,-50} {1,50}",
                     $"{paymentType}: ",
                     $"Php {lbCutomerMoney.Text}"
                 );
@@ -621,12 +570,14 @@ namespace pos_pc_parts
 
         private void button19_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
+            frmLogin loginForm = new frmLogin();
             loginForm.Show();
 
 
 
             this.Close();
         }
+
+        
     }
 }

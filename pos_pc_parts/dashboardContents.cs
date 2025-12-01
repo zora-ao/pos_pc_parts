@@ -20,7 +20,7 @@ namespace pos_pc_parts
         }
 
 
-      
+
         public void CountProducts()
         {
             cn = new MySqlConnection(dbcon.GetConnection());
@@ -82,7 +82,8 @@ namespace pos_pc_parts
             cn.Close();
         }
 
-        public void lowStockProducts() {             
+        public void lowStockProducts()
+        {
             int count = 0;
 
             cn = new MySqlConnection(dbcon.GetConnection());
@@ -99,6 +100,6 @@ namespace pos_pc_parts
             lbLowStocks.Text = count.ToString();
         }
 
-
+        
     }
 }

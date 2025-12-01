@@ -1,4 +1,3 @@
-using Inventoryhehe;
 using MySql.Data.MySqlClient;
 
 namespace pos_pc_parts
@@ -65,7 +64,7 @@ namespace pos_pc_parts
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
+            frmLogin loginForm = new frmLogin();
             loginForm.Show();
 
             this.Close();
