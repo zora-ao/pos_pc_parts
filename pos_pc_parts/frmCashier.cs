@@ -13,6 +13,7 @@ using iTextFont = iTextSharp.text.Font;
 using iTextSharp.text.pdf.draw;
 using PdfiumViewer;
 using System.IO;
+using Inventoryhehe;
 
 namespace pos_pc_parts
 {
@@ -620,6 +621,11 @@ namespace pos_pc_parts
 
         private void button19_Click(object sender, EventArgs e)
         {
+            Login loginForm = new Login();
+            loginForm.Show();
+
+
+
             this.Close();
         }
     }

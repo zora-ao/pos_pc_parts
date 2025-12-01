@@ -98,10 +98,6 @@ namespace Inventoryhehe
 
             button1.Region = new Region(path);
 
-
-
-
-
             SetPlaceholder();
 
         }
@@ -156,7 +152,7 @@ namespace Inventoryhehe
             {
                 cn.Open();
 
-                string query = "SELECT role FROM users WHERE username=@username AND password=@password";
+                string query = "SELECT role FROM users WHERE name=@username AND password=@password";
                 using (cm = new MySqlCommand(query, cn))
                 {
                     cm.Parameters.AddWithValue("@username", username);

@@ -1,3 +1,4 @@
+using Inventoryhehe;
 using MySql.Data.MySqlClient;
 
 namespace pos_pc_parts
@@ -8,91 +9,66 @@ namespace pos_pc_parts
 
         public frmAdmin()
         {
-          
-            defaultLoad();
+            InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            LoadChildForm(new dashboardContents());
 
         }
 
-        public void defaultLoad()
+        private void LoadChildForm(Form child)
         {
             admin_main_panel.Controls.Clear();
-
-            dashboardContents dashboard = new dashboardContents();
-            dashboard.TopLevel = false;
-            dashboard.FormBorderStyle = FormBorderStyle.None;
-            dashboard.Dock = DockStyle.Fill;
-            admin_main_panel.Controls.Add(dashboard);
-            admin_main_panel.Tag = dashboard;
-            dashboard.BringToFront();
-            dashboard.Show();
+            child.TopLevel = false;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.Dock = DockStyle.Fill;
+            admin_main_panel.Controls.Add(child);
+            admin_main_panel.Tag = child;
+            child.BringToFront();
+            child.Show();
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            defaultLoad();
-
+            LoadChildForm(new dashboardContents());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            admin_main_panel.Controls.Clear();
-
-            AddProducts addProd = new AddProducts();
-            addProd.TopLevel = false;
-            addProd.FormBorderStyle = FormBorderStyle.None;
-            addProd.Dock = DockStyle.Fill;
-            admin_main_panel.Controls.Add(addProd);
-            admin_main_panel.Tag = addProd;
-            addProd.BringToFront();
-            addProd.Show();
+            LoadChildForm(new AddProducts());
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            admin_main_panel.Controls.Clear();
-
-            categoryList cat = new categoryList();
-            cat.TopLevel = false;
-            cat.FormBorderStyle = FormBorderStyle.None;
-            cat.Dock = DockStyle.Fill;
-            admin_main_panel.Controls.Add(cat);
-            admin_main_panel.Tag = cat;
-            cat.BringToFront();
-            cat.Show();
+            LoadChildForm(new categoryList());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmCashier frmCash = new frmCashier();
-            frmCash.ShowDialog();
+            LoadChildForm(new categoryList());
         }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            admin_main_panel.Controls.Clear();
-
-            frmSales sls = new frmSales();
-            sls.TopLevel = false;
-            sls.FormBorderStyle = FormBorderStyle.None;
-            sls.Dock = DockStyle.Fill;
-            admin_main_panel.Controls.Add(sls);
-            admin_main_panel.Tag = sls;
-            sls.BringToFront();
-            sls.Show();
+            LoadChildForm(new frmSales());
         }
 
         private void btnAddUsers_Click(object sender, EventArgs e)
         {
-            frmAddUsers addUser = new frmAddUsers();
-            addUser.TopLevel = false;
-            addUser.FormBorderStyle = FormBorderStyle.None;
-            addUser.Dock = DockStyle.Fill;
-            admin_main_panel.Controls.Add(addUser);
-            admin_main_panel.Tag = addUser;
-            addUser.BringToFront();
-            addUser.Show();
+            LoadChildForm(new frmAddUsers());
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+
+            this.Close();
         }
     }
 }

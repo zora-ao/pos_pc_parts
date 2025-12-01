@@ -33,7 +33,6 @@
             panel2 = new Panel();
             btnAddUsers = new Button();
             btnSales = new Button();
-            button2 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             button3 = new Button();
@@ -61,7 +60,6 @@
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
             panel2.Controls.Add(btnAddUsers);
             panel2.Controls.Add(btnSales);
-            panel2.Controls.Add(button2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(button3);
@@ -77,11 +75,11 @@
             // btnAddUsers
             // 
             btnAddUsers.Image = Properties.Resources.si_user_fill;
-            btnAddUsers.Location = new Point(26, 377);
+            btnAddUsers.Location = new Point(26, 386);
             btnAddUsers.Name = "btnAddUsers";
             btnAddUsers.Size = new Size(135, 59);
             btnAddUsers.TabIndex = 0;
-            btnAddUsers.Text = "add users";
+            btnAddUsers.Text = "Add Users";
             btnAddUsers.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAddUsers.UseVisualStyleBackColor = true;
             btnAddUsers.Click += btnAddUsers_Click;
@@ -91,7 +89,7 @@
             btnSales.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSales.Image = (Image)resources.GetObject("btnSales.Image");
             btnSales.ImageAlign = ContentAlignment.MiddleRight;
-            btnSales.Location = new Point(26, 314);
+            btnSales.Location = new Point(26, 320);
             btnSales.Name = "btnSales";
             btnSales.Size = new Size(135, 59);
             btnSales.TabIndex = 0;
@@ -99,16 +97,6 @@
             btnSales.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSales.UseVisualStyleBackColor = true;
             btnSales.Click += btnSales_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(44, 462);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 0;
-            button2.Text = "POS";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // label1
             // 
@@ -137,7 +125,7 @@
             // button3
             // 
             button3.Image = Properties.Resources.package;
-            button3.Location = new Point(26, 180);
+            button3.Location = new Point(26, 188);
             button3.Name = "button3";
             button3.Size = new Size(135, 59);
             button3.TabIndex = 0;
@@ -156,11 +144,12 @@
             button4.Text = "Logout";
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // btnCategory
             // 
             btnCategory.Image = Properties.Resources.list;
-            btnCategory.Location = new Point(26, 249);
+            btnCategory.Location = new Point(26, 254);
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(135, 59);
             btnCategory.TabIndex = 0;
@@ -172,7 +161,7 @@
             // button1
             // 
             button1.Image = Properties.Resources.clipboard;
-            button1.Location = new Point(26, 111);
+            button1.Location = new Point(26, 122);
             button1.Name = "button1";
             button1.Size = new Size(135, 59);
             button1.TabIndex = 0;
@@ -189,7 +178,7 @@
             admin_main_panel.Size = new Size(752, 537);
             admin_main_panel.TabIndex = 2;
             // 
-            // Form1
+            // frmAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -197,8 +186,8 @@
             Controls.Add(admin_main_panel);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "Form1";
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Name = "frmAdmin";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -216,7 +205,6 @@
         private Button button1;
         private Label label1;
         private Panel admin_main_panel;
-        private Button button2;
         private Button btnSales;
         private Button btnAddUsers;
     }
