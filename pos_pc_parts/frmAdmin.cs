@@ -65,9 +65,10 @@ namespace pos_pc_parts
         private void button4_Click(object sender, EventArgs e)
         {
             frmLogin loginForm = new frmLogin();
-            loginForm.Show();
+            this.Hide();
+            loginForm.ShowDialog();
 
-            this.Close();
+            
         }
     }
 }

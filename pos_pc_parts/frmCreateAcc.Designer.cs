@@ -41,10 +41,11 @@
             cuiComboBox1 = new CuoreUI.Controls.cuiComboBox();
             btnCreateAcc = new CuoreUI.Controls.cuiButton();
             Show_Password = new Guna.UI2.WinForms.Guna2CheckBox();
-            button1 = new Button();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             cuiPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // cuiPanel1
@@ -65,9 +66,9 @@
             // panel1
             // 
             panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(cuiPanel2);
-            panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(364, 0);
             panel1.Name = "panel1";
@@ -113,7 +114,6 @@
             button2.TabIndex = 19;
             button2.Text = "Signin";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // txtRePass
             // 
@@ -300,20 +300,16 @@
             Show_Password.UseVisualStyleBackColor = false;
             Show_Password.CheckedChanged += Show_Password_CheckedChanged;
             // 
-            // button1
+            // pictureBox2
             // 
-            button1.BackColor = Color.Transparent;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Black;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(391, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(45, 25);
-            button1.TabIndex = 8;
-            button1.Text = "X";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            pictureBox2.Image = Properties.Resources.Close;
+            pictureBox2.Location = new Point(412, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(21, 22);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 14;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // frmCreateAcc
             // 
@@ -329,6 +325,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             cuiPanel2.ResumeLayout(false);
             cuiPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -342,10 +339,10 @@
         private CuoreUI.Controls.cuiComboBox cuiComboBox1;
         private CuoreUI.Controls.cuiButton btnCreateAcc;
         private Guna.UI2.WinForms.Guna2CheckBox Show_Password;
-        private Button button1;
         private CuoreUI.Controls.cuiTextBox txtRePass;
         private CuoreUI.Controls.cuiTextBox txtPassword;
         private CuoreUI.Controls.cuiTextBox txtUsername;
         private Button button2;
+        private PictureBox pictureBox2;
     }
 }

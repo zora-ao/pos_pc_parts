@@ -24,6 +24,7 @@ namespace pos_pc_parts
 
         private string cashierName;
         private int currentCashierId;
+        private decimal vat = 0.12m;
         public frmCashier(string name, int id)
         {
             InitializeComponent();
@@ -88,7 +89,7 @@ namespace pos_pc_parts
 
         }
 
-       
+
         public void Card_Click(object sender, EventArgs e)
         {
             ProductCard card = (ProductCard)sender;
@@ -183,9 +184,20 @@ namespace pos_pc_parts
                     subTotals += Convert.ToDecimal(dr["subtotal"]);
                 }
 
-                txtSubTotal.Content = subTotals.ToString();
+                decimal vat = 0.12m * 100;
+                decimal totalWithVAT = subTotals + vat;
 
-
+                lbSubTotal.Content = subTotals.ToString();
+                lbTax.Content = vat.ToString() + "%";
+                if (subTotals == 0)
+                {
+                    lbTotal.Content = "0.00";
+                }
+                else
+                {
+                    lbTotal.Content = totalWithVAT.ToString("N2");
+                }
+                    
 
                 cn.Close();
             }
@@ -212,10 +224,6 @@ namespace pos_pc_parts
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtAmount.Content = "";
-        }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -223,22 +231,7 @@ namespace pos_pc_parts
                 txtAmount.Content = txtAmount.Content.Remove(txtAmount.Content.Length - 1);
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            if (decimal.TryParse(txtAmount.Content, out decimal amount))
-            {
-                MessageBox.Show("Amount entered: ₱ " + amount.ToString("N2"));
-
-
-                lbCutomerMoney.Text = amount.ToString("N2");
-                txtAmount.Content = "";
-
-            }
-            else
-            {
-                MessageBox.Show("Invalid amount!");
-            }
-        }
+     
 
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -339,7 +332,7 @@ namespace pos_pc_parts
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
-            
+
             MySqlCommand getItems = new MySqlCommand(
                 "SELECT product_id, quantity FROM pending_items WHERE cashier_id = @cashier", cn);
             getItems.Parameters.AddWithValue("@cashier", currentCashierId);
@@ -379,75 +372,50 @@ namespace pos_pc_parts
         private void btnPay_Click(object sender, EventArgs e)
         {
 
-
-            if (decimal.TryParse(lbCutomerMoney.Text, out decimal amount))
+            if (decimal.TryParse(txtAmount.Content, out decimal amount))
             {
-
-                decimal change = amount - Convert.ToDecimal(txtSubTotal.Content);
-
-                if (amount < Convert.ToDecimal(txtSubTotal.Content) || Convert.ToDecimal(txtSubTotal.Content) <= 0)
-                {
-                    MessageBox.Show("Insufficient amount!");
-                    return;
-                }
-
-                if (amount == Convert.ToDecimal(txtSubTotal.Content))
-                {
-
-                    lbCustomerChanged.Text = change.ToString("N2");
-                }
-
-                if (comboPayment.SelectedIndex == -1 || comboPayment.SelectedItem == null)
+                if (comboPayment.SelectedItem == null || comboPayment.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please select a payment method.");
                     return;
                 }
 
-
-                lbCutomerMoney.Text = amount.ToString("N2");
-                txtAmount.Content = "";
-
-                lbCustomerChanged.Text = change.ToString();
-
+                string paymentType = comboPayment.SelectedItem.ToString();
                 cn = new MySqlConnection(dbcon.GetConnection());
-                cn.Open();
 
+                cn.Open();
                 cm = new MySqlCommand(
-                    "INSERT INTO transactions (cashier_id, total, payment_type, date_sold) " +
-                    "VALUES (@cashier, @total, @payment, NOW()); SELECT LAST_INSERT_ID();",
-                    cn
-                );
-                cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.Parameters.AddWithValue("@total", Convert.ToDecimal(txtSubTotal.Content));
-                cm.Parameters.AddWithValue("@payment", comboPayment.SelectedItem.ToString());
-                int transactionId = Convert.ToInt32(cm.ExecuteScalar());
+                    "INSERT INTO transactions (cashier_id, payment_type, total) " +
+                    "VALUES (@cashier_id, @payment_type, @total); SELECT LAST_INSERT_ID();", cn);
+                cm.Parameters.AddWithValue("@cashier_id", currentCashierId);
+                cm.Parameters.AddWithValue("@payment_type", paymentType);
+                cm.Parameters.AddWithValue("@total", amount);
+
+
+                int transaction_id = Convert.ToInt32(cm.ExecuteScalar());
 
                 cm = new MySqlCommand(
                     "INSERT INTO transaction_items (transaction_id, product_id, quantity, price) " +
-                    "SELECT @trans_id, product_id, quantity, price FROM pending_items WHERE cashier_id = @cashier",
-                    cn
-                );
-                cm.Parameters.AddWithValue("@trans_id", transactionId);
-                cm.Parameters.AddWithValue("@cashier", currentCashierId);
+                    "SELECT @transaction_id, product_id, quantity, price " +
+                    "FROM pending_items WHERE cashier_id = @cashier_id", cn);
+                cm.Parameters.AddWithValue("@transaction_id", transaction_id);
+                cm.Parameters.AddWithValue("@cashier_id", currentCashierId);
                 cm.ExecuteNonQuery();
 
-                cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier", cn);
-                cm.Parameters.AddWithValue("@cashier", currentCashierId);
-                cm.ExecuteNonQuery();
-                MessageBox.Show("Payment successful! Transaction ID: " + transactionId, "Payment",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier_id", cn);
+                cm.Parameters.AddWithValue("@cashier_id", currentCashierId);
 
+                cm.ExecuteNonQuery();
 
                 cn.Close();
 
-
                 LoadPendingItems();
+                loadProducts();
+                GenerateReceipt(transaction_id, paymentType);
 
-                string paymentMethod = comboPayment.SelectedItem?.ToString() ?? "Unknown";
-                GenerateReceipt(transactionId, paymentMethod);
+                txtAmount.Content = "";
 
-                lbCutomerMoney.Text = "0.00";
-                lbCustomerChanged.Text = "0.00";
+
 
 
             }
@@ -455,6 +423,7 @@ namespace pos_pc_parts
             {
                 MessageBox.Show("Invalid amount!");
             }
+
         }
 
         private void GenerateReceipt(int transactionId, string paymentType)
@@ -520,6 +489,8 @@ namespace pos_pc_parts
                     total += Convert.ToDecimal(dr["subtotal"]);
                 }
 
+                
+
                 doc.Add(table);
 
                 dr.Close();
@@ -528,6 +499,26 @@ namespace pos_pc_parts
                 doc.Add(Centered(" "));
                 doc.Add(Centered(" "));
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
+                
+                string paymentLine = string.Format(
+                    "{0,-50} {1,50}",
+                    $"SUBTOTAL: ",
+                    $"Php {(total / (1 + vat)):N2}"
+                );
+                Paragraph p = new Paragraph(paymentLine);
+                p.Alignment = Element.ALIGN_CENTER;
+                doc.Add(p);
+
+                string vatLine = string.Format(
+                    "{0,-50} {1,50}",
+                    $"VAT (12%): ",
+                    $"Php {(total - (total / (1 + vat))):N2}"
+                );
+                Paragraph pVat = new Paragraph(vatLine);
+                pVat.Alignment = Element.ALIGN_CENTER;
+                doc.Add(pVat);
+
+
                 string line1 = string.Format(
                     "{0,-50} {1,50}",
                     $"TOTAL: ",
@@ -543,7 +534,7 @@ namespace pos_pc_parts
                 string line2 = string.Format(
                     "{0,-50} {1,50}",
                     $"{paymentType}: ",
-                    $"Php {lbCutomerMoney.Text}"
+                    $"Php {txtAmount.Content}"
                 );
 
                 Paragraph p2 = new Paragraph(line2);
@@ -553,7 +544,7 @@ namespace pos_pc_parts
                 string line3 = string.Format(
                     "{0,-50} {1,50}",
                     $"Change: ",
-                    $"Php {lbCustomerChanged.Text}"
+                    $"Php {Convert.ToInt64(txtAmount.Content) - total}"
                 );
 
                 Paragraph p3 = new Paragraph(line3);
@@ -561,9 +552,10 @@ namespace pos_pc_parts
                 doc.Add(p3);
 
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
-
+                doc.Add(Centered(" "));
+                doc.Add(Centered(" "));
                 Paragraph thankYou = new Paragraph(
-                    "THANK YOU FOR YOUR PURCHASE!",
+                    "********************THANK YOU FOR YOUR PURCHASE!********************",
                     new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD)
                 );
                 thankYou.Alignment = Element.ALIGN_CENTER;
@@ -596,7 +588,7 @@ namespace pos_pc_parts
             }
 
         }
-         
+
         private Paragraph Centered(string text)
         {
             Paragraph p = new Paragraph(text);
@@ -613,6 +605,6 @@ namespace pos_pc_parts
 
         }
 
-        
+       
     }
 }

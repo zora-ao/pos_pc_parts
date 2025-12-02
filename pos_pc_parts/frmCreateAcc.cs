@@ -66,16 +66,20 @@ namespace pos_pc_parts
 
             MessageBox.Show("Account created successfully! Please login.");
 
+            txtUsername.Content = "";
+            txtPassword.Content = "";
+            txtRePass.Content = "";
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frmLogin loginForm = new frmLogin();
-            this.Hide();
-            loginForm.ShowDialog();
-        }
+
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
