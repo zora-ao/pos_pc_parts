@@ -21,10 +21,19 @@ namespace pos_pc_parts
         MySqlConnection cn = new MySqlConnection();
         MySqlCommand cm = new MySqlCommand();
         DBConnection dbcon = new DBConnection();
-        public frmCashier()
+
+        private string cashierName;
+        private int currentCashierId;
+        public frmCashier(string name, int id)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            cashierName = name;
+            currentCashierId = id;
+
+            lbCashierName.Content = name;
+
 
             Button[] numberButtons = { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
@@ -44,6 +53,8 @@ namespace pos_pc_parts
 
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
+
+           
 
             string query = "SELECT product_id, product_name, image_path, price, quantity FROM products";
 
@@ -77,12 +88,11 @@ namespace pos_pc_parts
 
         }
 
-        public int currentCashierId = 1;
+       
         public void Card_Click(object sender, EventArgs e)
         {
-            Panel card = (Panel)sender;
-            string id = card.Tag.ToString();
-
+            ProductCard card = (ProductCard)sender;
+            string id = card.ProductID;
 
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
@@ -325,17 +335,44 @@ namespace pos_pc_parts
 
         private void btnClearCart_Click(object sender, EventArgs e)
         {
-            cn = new MySqlConnection(dbcon.GetConnection());
 
+            cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
+
+            
+            MySqlCommand getItems = new MySqlCommand(
+                "SELECT product_id, quantity FROM pending_items WHERE cashier_id = @cashier", cn);
+            getItems.Parameters.AddWithValue("@cashier", currentCashierId);
+
+            MySqlDataReader dr = getItems.ExecuteReader();
+
+            List<(string productId, int qty)> items = new List<(string, int)>();
+            while (dr.Read())
+            {
+                items.Add((dr["product_id"].ToString(), Convert.ToInt32(dr["quantity"])));
+            }
+
+            dr.Close();
+
+            foreach (var item in items)
+            {
+                MySqlCommand updateStock = new MySqlCommand(
+                    "UPDATE products SET quantity = quantity + @qty WHERE product_id = @product_id", cn);
+                updateStock.Parameters.AddWithValue("@qty", item.qty);
+                updateStock.Parameters.AddWithValue("@product_id", item.productId);
+                updateStock.ExecuteNonQuery();
+            }
 
             cm = new MySqlCommand("DELETE FROM pending_items WHERE cashier_id = @cashier", cn);
             cm.Parameters.AddWithValue("@cashier", currentCashierId);
             cm.ExecuteNonQuery();
 
-            MessageBox.Show("Cart cleared successfully.", "Clear Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cart cleared successfully!", "Clear Cart",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             LoadPendingItems();
+            loadProducts();
             cn.Close();
         }
 
@@ -445,7 +482,7 @@ namespace pos_pc_parts
                 doc.Add(Centered("======================================"));
                 doc.Add(Centered("Transaction ID: " + transactionId));
                 doc.Add(Centered("Date: " + DateTime.Now));
-                doc.Add(Centered("Cashier ID: " + currentCashierId));
+                doc.Add(Centered("Cashier ID: " + cashierName));
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
                 doc.Add(Centered(" "));
                 doc.Add(Centered(" "));
@@ -559,7 +596,7 @@ namespace pos_pc_parts
             }
 
         }
-
+         
         private Paragraph Centered(string text)
         {
             Paragraph p = new Paragraph(text);
@@ -571,11 +608,9 @@ namespace pos_pc_parts
         private void button19_Click(object sender, EventArgs e)
         {
             frmLogin loginForm = new frmLogin();
-            loginForm.Show();
+            this.Hide();
+            loginForm.ShowDialog();
 
-
-
-            this.Close();
         }
 
         

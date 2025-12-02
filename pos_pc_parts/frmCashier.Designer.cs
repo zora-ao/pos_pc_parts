@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel2 = new Panel();
             cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
+            lbCashierName = new CuoreUI.Controls.cuiLabel();
             panel4 = new Panel();
             button19 = new Button();
             button17 = new Button();
@@ -89,7 +89,7 @@
             // 
             panel2.BackColor = Color.SlateGray;
             panel2.Controls.Add(cuiLabel2);
-            panel2.Controls.Add(cuiLabel1);
+            panel2.Controls.Add(lbCashierName);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -109,18 +109,18 @@
             cuiLabel2.TabIndex = 1;
             cuiLabel2.VerticalAlignment = StringAlignment.Near;
             // 
-            // cuiLabel1
+            // lbCashierName
             // 
-            cuiLabel1.Content = "Jose";
-            cuiLabel1.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            cuiLabel1.ForeColor = Color.White;
-            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(91, 12);
-            cuiLabel1.Margin = new Padding(4, 3, 4, 3);
-            cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(62, 23);
-            cuiLabel1.TabIndex = 1;
-            cuiLabel1.VerticalAlignment = StringAlignment.Near;
+            lbCashierName.Content = "Jose";
+            lbCashierName.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            lbCashierName.ForeColor = Color.White;
+            lbCashierName.HorizontalAlignment = StringAlignment.Center;
+            lbCashierName.Location = new Point(91, 12);
+            lbCashierName.Margin = new Padding(4, 3, 4, 3);
+            lbCashierName.Name = "lbCashierName";
+            lbCashierName.Size = new Size(62, 23);
+            lbCashierName.TabIndex = 1;
+            lbCashierName.VerticalAlignment = StringAlignment.Near;
             // 
             // panel4
             // 
@@ -436,8 +436,8 @@
             // 
             // colName
             // 
-            dataGridViewCellStyle1.BackColor = Color.Lime;
-            colName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = Color.Lime;
+            colName.DefaultCellStyle = dataGridViewCellStyle2;
             colName.HeaderText = "Name";
             colName.Name = "colName";
             colName.ReadOnly = true;
@@ -732,6 +732,7 @@
             flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(3, 3, 3, 5);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(5);
             flowLayoutPanel1.Size = new Size(416, 328);
@@ -810,7 +811,7 @@
         private CuoreUI.Controls.cuiComboBox comboPayment;
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiTextBox txtSubTotal;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
+        private CuoreUI.Controls.cuiLabel lbCashierName;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
     }
 }

@@ -67,11 +67,15 @@ namespace pos_pc_parts
                 MySqlDataReader dr = cm.ExecuteReader();
                 if (dr.Read())
                 {
+                    int cashierId = Convert.ToInt32(dr["user_id"]);
+                    string cashierName = dr["name"].ToString();
+
                     cn.Close();
                     this.Hide();
-                    frmCashier cashierForm = new frmCashier();
+
+                  
+                    frmCashier cashierForm = new frmCashier(cashierName, cashierId);
                     cashierForm.ShowDialog();
-                    this.Close();
                 }
                 else
                 {

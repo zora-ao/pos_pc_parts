@@ -52,20 +52,26 @@ namespace pos_pc_parts
         public ProductCard()
         {
             InitializeComponent();
+
+            this.MouseClick += (s, e) => this.OnClick(e);
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.MouseClick += (s, e) => this.OnClick(e);
+            }
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
 
-            int radius = 15; 
+            int radius = 15;
             var path = new GraphicsPath();
             path.StartFigure();
 
-          
+
             path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90);
 
-           
+
             path.AddArc(new Rectangle(Width - radius, 0, radius, radius), 270, 90);
 
             // Bottom-right corner
@@ -76,6 +82,14 @@ namespace pos_pc_parts
 
             path.CloseFigure();
             this.Region = new Region(path);
+        }
+
+        
+
+
+        private void cuiPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
