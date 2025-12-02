@@ -133,6 +133,16 @@ namespace pos_pc_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Line_8 {
+            get {
+                object obj = ResourceManager.GetObject("Line 8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap list {
             get {
                 object obj = ResourceManager.GetObject("list", resourceCulture);
@@ -146,6 +156,16 @@ namespace pos_pc_parts.Properties {
         internal static System.Drawing.Bitmap log_out {
             get {
                 object obj = ResourceManager.GetObject("log-out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log_out1 {
+            get {
+                object obj = ResourceManager.GetObject("log-out1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +246,16 @@ namespace pos_pc_parts.Properties {
         internal static System.Drawing.Bitmap streamline_freehand_shop_cashier {
             get {
                 object obj = ResourceManager.GetObject("streamline-freehand_shop-cashier", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tdesign_cart_add_filled {
+            get {
+                object obj = ResourceManager.GetObject("tdesign_cart-add-filled", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

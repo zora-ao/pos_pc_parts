@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
+            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             lblQty = new CuoreUI.Controls.cuiLabel();
             lblPrice = new CuoreUI.Controls.cuiLabel();
             lblName = new CuoreUI.Controls.cuiLabel();
             cuiPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // cuiPanel2
             // 
+            cuiPanel2.Controls.Add(pictureBox2);
             cuiPanel2.Controls.Add(pictureBox1);
             cuiPanel2.Controls.Add(lblQty);
             cuiPanel2.Controls.Add(lblPrice);
@@ -53,6 +56,17 @@
             cuiPanel2.Size = new Size(150, 150);
             cuiPanel2.TabIndex = 1;
             cuiPanel2.Paint += cuiPanel2_Paint;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.tdesign_cart_add_filled;
+            pictureBox2.Location = new Point(116, 119);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(28, 23);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 7;
+            pictureBox2.TabStop = false;
+        
             // 
             // pictureBox1
             // 
@@ -69,11 +83,11 @@
             // lblQty
             // 
             lblQty.Content = "Qty\\.\\ 10";
-            lblQty.HorizontalAlignment = StringAlignment.Center;
-            lblQty.Location = new Point(7, 127);
+            lblQty.HorizontalAlignment = StringAlignment.Near;
+            lblQty.Location = new Point(11, 127);
             lblQty.Margin = new Padding(4, 3, 4, 3);
             lblQty.Name = "lblQty";
-            lblQty.Size = new Size(53, 19);
+            lblQty.Size = new Size(74, 19);
             lblQty.TabIndex = 6;
             lblQty.VerticalAlignment = StringAlignment.Near;
             // 
@@ -82,11 +96,11 @@
             lblPrice.Content = "P3500";
             lblPrice.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblPrice.ForeColor = SystemColors.ActiveCaption;
-            lblPrice.HorizontalAlignment = StringAlignment.Center;
-            lblPrice.Location = new Point(6, 105);
+            lblPrice.HorizontalAlignment = StringAlignment.Near;
+            lblPrice.Location = new Point(11, 102);
             lblPrice.Margin = new Padding(4, 3, 4, 3);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(57, 19);
+            lblPrice.Size = new Size(74, 19);
             lblPrice.TabIndex = 4;
             lblPrice.VerticalAlignment = StringAlignment.Near;
             // 
@@ -98,7 +112,7 @@
             lblName.Location = new Point(7, 83);
             lblName.Margin = new Padding(4, 3, 4, 3);
             lblName.Name = "lblName";
-            lblName.Size = new Size(57, 19);
+            lblName.Size = new Size(137, 19);
             lblName.TabIndex = 5;
             lblName.VerticalAlignment = StringAlignment.Near;
             // 
@@ -110,6 +124,7 @@
             Controls.Add(cuiPanel2);
             Name = "ProductCard";
             cuiPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -120,5 +135,6 @@
         private CuoreUI.Controls.cuiLabel lblQty;
         private CuoreUI.Controls.cuiLabel lblPrice;
         private CuoreUI.Controls.cuiLabel lblName;
+        private PictureBox pictureBox2;
     }
 }

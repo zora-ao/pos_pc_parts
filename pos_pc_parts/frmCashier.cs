@@ -55,7 +55,7 @@ namespace pos_pc_parts
             cn = new MySqlConnection(dbcon.GetConnection());
             cn.Open();
 
-           
+
 
             string query = "SELECT product_id, product_name, image_path, price, quantity FROM products";
 
@@ -197,7 +197,7 @@ namespace pos_pc_parts
                 {
                     lbTotal.Content = totalWithVAT.ToString("N2");
                 }
-                    
+
 
                 cn.Close();
             }
@@ -231,7 +231,7 @@ namespace pos_pc_parts
                 txtAmount.Content = txtAmount.Content.Remove(txtAmount.Content.Length - 1);
         }
 
-     
+
 
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -451,7 +451,7 @@ namespace pos_pc_parts
                 doc.Add(Centered("======================================"));
                 doc.Add(Centered("Transaction ID: " + transactionId));
                 doc.Add(Centered("Date: " + DateTime.Now));
-                doc.Add(Centered("Cashier ID: " + cashierName));
+                doc.Add(Centered("Cashier: " + cashierName));
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
                 doc.Add(Centered(" "));
                 doc.Add(Centered(" "));
@@ -472,7 +472,7 @@ namespace pos_pc_parts
                 table.WidthPercentage = 100;
                 table.SetWidths(new float[] { 2, 1, 1, 1 });
 
-                table.AddCell("Product");
+                table.AddCell("Items");
                 table.AddCell("Qty");
                 table.AddCell("Price");
                 table.AddCell("Total");
@@ -489,7 +489,7 @@ namespace pos_pc_parts
                     total += Convert.ToDecimal(dr["subtotal"]);
                 }
 
-                
+
 
                 doc.Add(table);
 
@@ -499,7 +499,7 @@ namespace pos_pc_parts
                 doc.Add(Centered(" "));
                 doc.Add(Centered(" "));
                 doc.Add(Centered("----------------------------------------------------------------------------------------------------------------"));
-                
+
                 string paymentLine = string.Format(
                     "{0,-50} {1,50}",
                     $"SUBTOTAL: ",
@@ -596,15 +596,11 @@ namespace pos_pc_parts
             return p;
         }
 
-
-        private void button19_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             frmLogin loginForm = new frmLogin();
             this.Hide();
             loginForm.ShowDialog();
-
         }
-
-       
     }
 }

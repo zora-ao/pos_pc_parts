@@ -53,11 +53,8 @@ namespace pos_pc_parts
         {
             InitializeComponent();
 
-            this.MouseClick += (s, e) => this.OnClick(e);
-            foreach (Control ctrl in this.Controls)
-            {
-                ctrl.MouseClick += (s, e) => this.OnClick(e);
-            }
+            pictureBox2.Click += (s, e) => this.OnClick(e);
+
         }
 
         protected override void OnResize(EventArgs e)
@@ -84,12 +81,14 @@ namespace pos_pc_parts
             this.Region = new Region(path);
         }
 
-        
+
 
 
         private void cuiPanel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+       
     }
 }
