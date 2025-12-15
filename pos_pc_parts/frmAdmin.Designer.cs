@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             panel1 = new Panel();
             panel2 = new Panel();
+            button1 = new Button();
             btnAddUsers = new Button();
             btnSales = new Button();
             label1 = new Label();
@@ -38,7 +39,6 @@
             button3 = new Button();
             button4 = new Button();
             btnCategory = new Button();
-            button1 = new Button();
             admin_main_panel = new Panel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -58,6 +58,7 @@
             // 
             panel2.BackColor = Color.FromArgb(69, 104, 130);
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(btnAddUsers);
             panel2.Controls.Add(btnSales);
             panel2.Controls.Add(label1);
@@ -65,12 +66,24 @@
             panel2.Controls.Add(button3);
             panel2.Controls.Add(button4);
             panel2.Controls.Add(btnCategory);
-            panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 38);
             panel2.Name = "panel2";
             panel2.Size = new Size(185, 537);
             panel2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.Image = Properties.Resources.clipboard;
+            button1.Location = new Point(26, 123);
+            button1.Name = "button1";
+            button1.Size = new Size(135, 59);
+            button1.TabIndex = 0;
+            button1.Text = "Dashboard";
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // btnAddUsers
             // 
@@ -115,9 +128,9 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 6);
+            pictureBox1.Location = new Point(40, 20);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 72);
+            pictureBox1.Size = new Size(92, 58);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -137,7 +150,7 @@
             // button4
             // 
             button4.Image = Properties.Resources.log_out;
-            button4.Location = new Point(26, 491);
+            button4.Location = new Point(40, 482);
             button4.Name = "button4";
             button4.Size = new Size(106, 43);
             button4.TabIndex = 0;
@@ -157,18 +170,6 @@
             btnCategory.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCategory.UseVisualStyleBackColor = true;
             btnCategory.Click += btnCategory_Click;
-            // 
-            // button1
-            // 
-            button1.Image = Properties.Resources.clipboard;
-            button1.Location = new Point(26, 122);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 59);
-            button1.TabIndex = 0;
-            button1.Text = "Dashboard";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // admin_main_panel
             // 

@@ -47,7 +47,7 @@ namespace pos_pc_parts
         {
             try
             {
-                if (txtAddCat.Text == "")
+                if (txtAddCat.Content == "")
                 {
                     MessageBox.Show("Please enter category name.");
                     return;
@@ -58,7 +58,7 @@ namespace pos_pc_parts
                 cn.Open();
 
                 cm = new MySqlCommand("INSERT INTO categories(name) VALUES(@name)", cn);
-                cm.Parameters.AddWithValue("@name", txtAddCat.Text);
+                cm.Parameters.AddWithValue("@name", txtAddCat.Content);
                 cm.ExecuteNonQuery();
 
                 cn.Close();
@@ -77,6 +77,8 @@ namespace pos_pc_parts
         private void btnClearCat_Click(object sender, EventArgs e)
         {
             txtAddCat.Content = "";
+            btnSaveCat.Enabled = true;
+            btnUpdateCat.Enabled = false;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -87,7 +89,7 @@ namespace pos_pc_parts
             {
                 btnSaveCat.Enabled = false;
                 btnUpdateCat.Enabled = true;
-                txtAddCat.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtAddCat.Content = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
             else if (colName == "colDelete")
             {
@@ -109,7 +111,7 @@ namespace pos_pc_parts
 
         private void btnUpdateCat_Click(object sender, EventArgs e)
         {
-            if (txtAddCat.Text == "")
+            if (txtAddCat.Content == "")
             {
                 MessageBox.Show("Please enter category name.");
                 return;
@@ -118,12 +120,13 @@ namespace pos_pc_parts
             cn.Open();
 
             cm = new MySqlCommand("UPDATE categories SET name=@name WHERE id=@id", cn);
-            cm.Parameters.AddWithValue("@name", txtAddCat.Text);
+            cm.Parameters.AddWithValue("@name", txtAddCat.Content);
             cm.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
             cm.ExecuteNonQuery();
             loadCategory();
             MessageBox.Show("Category has been successfully updated.");
             btnClearCat.PerformClick();
+            btnSaveCat.Enabled = true;
 
             cn.Close();
         }

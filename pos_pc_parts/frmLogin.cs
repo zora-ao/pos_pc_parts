@@ -106,18 +106,9 @@ namespace pos_pc_parts
             }
         }
 
-        private void cuiLabel2_Load(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frmCreateAcc createAccForm = new frmCreateAcc();
-            this.Hide();
-            createAccForm.ShowDialog();
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {

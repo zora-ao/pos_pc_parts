@@ -96,7 +96,7 @@
             panel2.ForeColor = Color.WhiteSmoke;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1134, 46);
+            panel2.Size = new Size(1170, 46);
             panel2.TabIndex = 1;
             // 
             // pictureBox1
@@ -143,9 +143,10 @@
             button17.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button17.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             button17.FlatStyle = FlatStyle.Flat;
-            button17.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button17.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            button17.ForeColor = Color.White;
             button17.ImageAlign = ContentAlignment.BottomCenter;
-            button17.Location = new Point(126, 445);
+            button17.Location = new Point(126, 444);
             button17.Name = "button17";
             button17.Size = new Size(80, 30);
             button17.TabIndex = 4;
@@ -163,7 +164,8 @@
             btnClearCart.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnClearCart.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             btnClearCart.FlatStyle = FlatStyle.Popup;
-            btnClearCart.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClearCart.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            btnClearCart.ForeColor = Color.White;
             btnClearCart.ImageAlign = ContentAlignment.BottomCenter;
             btnClearCart.Location = new Point(41, 444);
             btnClearCart.Name = "btnClearCart";
@@ -181,7 +183,7 @@
             btnPay.FlatAppearance.CheckedBackColor = Color.Silver;
             btnPay.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnPay.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnPay.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPay.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPay.Location = new Point(32, 304);
             btnPay.Name = "btnPay";
             btnPay.Size = new Size(197, 52);
@@ -197,7 +199,7 @@
             comboPayment.DropDownBackgroundColor = Color.White;
             comboPayment.DropDownForeColor = Color.FromArgb(27, 27, 27);
             comboPayment.ExpandArrowColor = Color.Gray;
-            comboPayment.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboPayment.Font = new Font("Verdana", 9F, FontStyle.Bold);
             comboPayment.ForeColor = Color.Black;
             comboPayment.Items = new string[]
     {
@@ -206,26 +208,26 @@
     "Paymaya",
     "Credit"
     };
-            comboPayment.Location = new Point(126, 383);
-            comboPayment.Margin = new Padding(6, 4, 6, 4);
+            comboPayment.Location = new Point(126, 375);
+            comboPayment.Margin = new Padding(7, 4, 7, 4);
             comboPayment.Name = "comboPayment";
             comboPayment.NoSelectionText = "None";
             comboPayment.OutlineColor = Color.FromArgb(64, 128, 128, 128);
             comboPayment.OutlineThickness = 1F;
             comboPayment.Rounding = 5;
-            comboPayment.SelectedIndex = -1;
-            comboPayment.SelectedItem = "";
-            comboPayment.Size = new Size(101, 36);
+            comboPayment.SelectedIndex = 0;
+            comboPayment.SelectedItem = "Cash";
+            comboPayment.Size = new Size(102, 34);
             comboPayment.SortAlphabetically = true;
             comboPayment.TabIndex = 3;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
-            label5.Location = new Point(41, 386);
+            label5.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            label5.Location = new Point(41, 385);
             label5.Name = "label5";
-            label5.Size = new Size(83, 21);
+            label5.Size = new Size(74, 14);
             label5.TabIndex = 1;
             label5.Text = "Payment: ";
             // 
@@ -329,7 +331,7 @@
             // 
             txtAmount.BackgroundColor = Color.LightGray;
             txtAmount.Content = "";
-            txtAmount.FocusBackgroundColor = Color.White;
+            txtAmount.FocusBackgroundColor = Color.LightGray;
             txtAmount.FocusImageTint = Color.White;
             txtAmount.FocusOutlineColor = Color.DarkKhaki;
             txtAmount.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -361,16 +363,17 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(369, 46);
             panel5.Name = "panel5";
-            panel5.Size = new Size(765, 556);
+            panel5.Size = new Size(801, 556);
             panel5.TabIndex = 4;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.Location = new Point(6, 7);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(475, 537);
+            flowLayoutPanel1.Size = new Size(511, 537);
             flowLayoutPanel1.TabIndex = 6;
             // 
             // cuiPanel1
@@ -397,7 +400,7 @@
             cuiPanel1.Controls.Add(btnDecimal);
             cuiPanel1.Controls.Add(label5);
             cuiPanel1.Controls.Add(btn8);
-            cuiPanel1.Location = new Point(487, 6);
+            cuiPanel1.Location = new Point(523, 6);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.White;
@@ -431,10 +434,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold);
+            label2.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(15, 5);
             label2.Name = "label2";
-            label2.Size = new Size(64, 21);
+            label2.Size = new Size(73, 18);
             label2.TabIndex = 5;
             label2.Text = "Amount";
             // 
@@ -683,7 +686,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1134, 602);
+            ClientSize = new Size(1170, 602);
             Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel1);

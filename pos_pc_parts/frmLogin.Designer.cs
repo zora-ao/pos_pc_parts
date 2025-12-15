@@ -33,8 +33,6 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
-            button2 = new Button();
-            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             comboRole = new CuoreUI.Controls.cuiComboBox();
             btnLogin = new CuoreUI.Controls.cuiButton();
             txtPassword = new CuoreUI.Controls.cuiTextBox();
@@ -86,8 +84,6 @@
             // 
             // cuiPanel2
             // 
-            cuiPanel2.Controls.Add(button2);
-            cuiPanel2.Controls.Add(cuiLabel1);
             cuiPanel2.Controls.Add(comboRole);
             cuiPanel2.Controls.Add(btnLogin);
             cuiPanel2.Controls.Add(txtPassword);
@@ -101,31 +97,6 @@
             cuiPanel2.Rounding = new Padding(8);
             cuiPanel2.Size = new Size(346, 318);
             cuiPanel2.TabIndex = 13;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Transparent;
-            button2.FlatStyle = FlatStyle.System;
-            button2.Location = new Point(200, 286);
-            button2.Name = "button2";
-            button2.Size = new Size(68, 23);
-            button2.TabIndex = 20;
-            button2.Text = "Signup";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
-            // 
-            // cuiLabel1
-            // 
-            cuiLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            cuiLabel1.BackColor = Color.Transparent;
-            cuiLabel1.Content = "Don't\\ have\\ an\\ account\\?";
-            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(57, 286);
-            cuiLabel1.Margin = new Padding(4, 3, 4, 3);
-            cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(155, 29);
-            cuiLabel1.TabIndex = 16;
-            cuiLabel1.VerticalAlignment = StringAlignment.Near;
             // 
             // comboRole
             // 
@@ -310,7 +281,6 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private CuoreUI.Controls.cuiPanel cuiPanel2;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
         private CuoreUI.Controls.cuiComboBox comboRole;
         private CuoreUI.Controls.cuiButton btnLogin;
         private CuoreUI.Controls.cuiTextBox cuiTextBox3;
@@ -318,6 +288,5 @@
         private Guna.UI2.WinForms.Guna2CheckBox Show_Password;
         private CuoreUI.Controls.cuiTextBox txtUsername;
         private Button button1;
-        private Button button2;
     }
 }

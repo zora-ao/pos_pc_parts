@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
             dataGridView1 = new DataGridView();
             transId = new DataGridViewTextBoxColumn();
             colTotal = new DataGridViewTextBoxColumn();
@@ -35,6 +36,9 @@
             colCashier = new DataGridViewTextBoxColumn();
             colDate = new DataGridViewTextBoxColumn();
             cuiLabel1 = new CuoreUI.Controls.cuiLabel();
+            sortDate = new CuoreUI.Controls.cuiCalendarDatePicker();
+            cuiLabel2 = new CuoreUI.Controls.cuiLabel();
+            btnLoadAll = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -94,11 +98,63 @@
             cuiLabel1.TabIndex = 1;
             cuiLabel1.VerticalAlignment = StringAlignment.Near;
             // 
+            // sortDate
+            // 
+            sortDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            sortDate.Content = new DateTime(2025, 12, 5, 0, 0, 0, 0);
+            sortDate.EnableThemeChangeButton = true;
+            sortDate.Font = new Font("Segoe UI", 9.75F);
+            sortDate.ForeColor = Color.Gray;
+            sortDate.HoverBackground = Color.FromArgb(50, 128, 128, 128);
+            sortDate.HoverOutline = Color.FromArgb(180, 128, 128, 128);
+            sortDate.Icon = (Image)resources.GetObject("sortDate.Icon");
+            sortDate.IconTint = Color.Gray;
+            sortDate.Location = new Point(308, 77);
+            sortDate.Margin = new Padding(4, 3, 4, 3);
+            sortDate.Name = "sortDate";
+            sortDate.NormalBackground = Color.FromArgb(32, 128, 128, 128);
+            sortDate.NormalOutline = Color.FromArgb(150, 128, 128, 128);
+            sortDate.OutlineThickness = 1.5F;
+            sortDate.PickerPosition = CuoreUI.Controls.cuiCalendarDatePicker.Position.Bottom;
+            sortDate.PressedBackground = Color.FromArgb(80, 128, 128, 128);
+            sortDate.PressedOutline = Color.FromArgb(210, 128, 128, 128);
+            sortDate.Rounding = 8;
+            sortDate.ShowIcon = true;
+            sortDate.Size = new Size(153, 28);
+            sortDate.TabIndex = 2;
+            sortDate.Theme = CuoreUI.Controls.Forms.DatePicker.Themes.Light;
+            sortDate.Load += sortDate_Load;
+            // 
+            // cuiLabel2
+            // 
+            cuiLabel2.Content = "Date\\ by:";
+            cuiLabel2.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiLabel2.HorizontalAlignment = StringAlignment.Center;
+            cuiLabel2.Location = new Point(221, 79);
+            cuiLabel2.Margin = new Padding(4, 3, 4, 3);
+            cuiLabel2.Name = "cuiLabel2";
+            cuiLabel2.Size = new Size(79, 26);
+            cuiLabel2.TabIndex = 3;
+            cuiLabel2.VerticalAlignment = StringAlignment.Near;
+            // 
+            // btnLoadAll
+            // 
+            btnLoadAll.Location = new Point(564, 77);
+            btnLoadAll.Name = "btnLoadAll";
+            btnLoadAll.Size = new Size(93, 29);
+            btnLoadAll.TabIndex = 4;
+            btnLoadAll.Text = "View All";
+            btnLoadAll.UseVisualStyleBackColor = true;
+            btnLoadAll.Click += btnLoadAll_Click;
+            // 
             // frmSales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(801, 450);
+            Controls.Add(btnLoadAll);
+            Controls.Add(cuiLabel2);
+            Controls.Add(sortDate);
             Controls.Add(cuiLabel1);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
@@ -117,5 +173,8 @@
         private DataGridViewTextBoxColumn colPayment;
         private DataGridViewTextBoxColumn colCashier;
         private DataGridViewTextBoxColumn colDate;
+        private CuoreUI.Controls.cuiCalendarDatePicker sortDate;
+        private CuoreUI.Controls.cuiLabel cuiLabel2;
+        private Button btnLoadAll;
     }
 }

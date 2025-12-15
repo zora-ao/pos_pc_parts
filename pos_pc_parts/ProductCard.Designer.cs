@@ -66,7 +66,7 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
-        
+         
             // 
             // pictureBox1
             // 

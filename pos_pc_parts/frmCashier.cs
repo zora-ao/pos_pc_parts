@@ -231,7 +231,7 @@ namespace pos_pc_parts
                 txtAmount.Content = txtAmount.Content.Remove(txtAmount.Content.Length - 1);
         }
 
-
+         
 
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
